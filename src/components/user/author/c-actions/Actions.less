@@ -1,0 +1,294 @@
+@import "../../../../utils/colors";
+
+.actions {
+  width: 75%;
+  min-height: 18%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-top: 0.6rem;
+  .goals-block{
+    width: 65%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .challenge-block{
+    width: 35%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .act-partition-title{
+    margin-top: 0.5rem;
+    padding-left: 2%;
+    height: 10%;
+    width: 100%;
+    color: @white;
+    font-size: 16px;
+    font-weight: 600;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+}
+
+.act-goals-row {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.act-goal {
+  transition: width 0.3s ease, transform 0.3s ease, z-index 0.3s, height 0.3s ease;
+  cursor: pointer;
+  background-color: @dark-element-dark;
+  color: @white;
+  overflow: hidden;
+  position: relative;
+  border-radius: 0.5rem;
+  width: 5%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  z-index: 3;
+  box-shadow: 0 0 7px #424242;
+}
+
+.act-goal-unactive{
+  height: 100%;
+  color: @text-color-dark;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  .act-img-unactive{
+    width: 100%;
+    height: 88%;
+    .goal-img {
+      width: 2.5rem;
+      height: 2.5rem;
+    }
+  }
+  .act-goal-num{
+    margin-top: 0.3rem;
+    max-height: 0.5rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.act-goal.inactive {
+  width: 10%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.act-goal.active {
+  width: 55%;
+  background-color: @accent-element-dark;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+
+  .act-goal-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    .act-goal-active-content{
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      .act-goal-wrapper{
+        width: 94%;
+        height: 88%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        .act-goal-id{
+          height: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin-bottom: 0.2rem;
+          .goal-img {
+            width: 2.5rem;
+            height: 2.5rem;
+          }
+        }
+        .act-goal-active-title{
+          width: 70%;
+          height: 50%;
+          margin-left: 0.35rem;
+          white-space: nowrap;
+          overflow: hidden;
+          display: flex;
+          justify-content: flex-start;
+          align-items: center;
+        }
+        .toggle-button {
+          width: 1.5rem;
+          height: 1.5rem;
+          background: none;
+          border-radius: 0.5rem;
+          cursor: pointer;
+          margin-left: auto;
+          margin-right: 2%;
+        }
+      }
+    }
+  }
+}
+
+.act-goal.expanded {
+  width: 100%;
+  z-index: 3;
+  height: auto;
+}
+
+
+.act-goal-progressbar {
+  background-color: @accent-element-dark-hover;
+  width: 100%;
+  height: 0.4rem;
+  margin-top: 5px;
+  overflow: hidden;
+  .act-progress {
+    background-color: @primary-color;
+    height: 100%;
+  }
+}
+
+
+
+.expanded-content {
+  margin-top: 10px;
+  animation: expand 0.3s ease-in-out;
+}
+
+.donation-input {
+  margin-top: 10px;
+  padding: 5px;
+  width: 80%;
+}
+
+.donate-button {
+  margin-top: 5px;
+  padding: 5px;
+  background-color: #ff9900;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  width: 100%;
+}
+
+.progress-info {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8em;
+  margin-top: 5px;
+}
+
+@keyframes expand {
+  from {
+    max-height: 0;
+    opacity: 0;
+  }
+  to {
+    max-height: 200px;
+    opacity: 1;
+  }
+}
+
+/* BIDS */
+.act-challenge-block{
+  width: 100%;
+  height: 100%;
+  background-color: @accent-element-dark;
+  border-radius: 0.5rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  .bid-info{
+    width: 73%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .bid-title{
+      width: 100%;
+      height: 45%;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-start;
+      text-align: left;
+      color: @white;
+      font-weight: 500;
+      font-size: 15px;
+      .bid-author{
+        color: @primary-color;
+      }
+    }
+    .bid-descr{
+      width: 100%;
+      height: 54%;
+      font-size: 14px;
+      font-weight: 300;
+      color: @text-color-dark;
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: flex-start;
+      text-align: left;
+    }
+  }
+  .bid-button{
+    width: 14%;
+    margin-left: 3%;
+    height: 65%;
+    aspect-ratio: 1/1;
+    border-radius: 0.5rem;
+    background-color: @primary-color;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    cursor: pointer;
+    user-select: none;
+    text-decoration: none;
+    .bid-icon{
+      width: 50%;
+      height: 50%;
+    }
+    .bid-btn-text{
+      width: 80%;
+      height: 20%;
+      color: @dark-element-dark;
+      font-weight: 500;
+    }
+  }
+}
+

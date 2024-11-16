@@ -1,0 +1,30 @@
+.App {
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.app-content{
+  margin-top: 5.5%;
+  width: 100%;
+  min-height: 80%;
+  /*background-color: antiquewhite;*/
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+}
+
+
+/*Scrollbar settings*/
+::-webkit-scrollbar {
+  display: none;
+}
+
+.scroll-container {
+  scrollbar-width: none;
+}
+
