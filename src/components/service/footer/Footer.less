@@ -1,0 +1,48 @@
+@import "../../../utils/colors";
+
+.footer{
+  width: 100%;
+  height: 20%;
+  background-color: @accent-element-dark;
+  position: relative;
+  bottom: -1rem;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .content{
+    padding-top: 1rem;
+    width: 80%;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    .upper-info{
+      width: 100%;
+      height: 330px;
+      margin-bottom: 1rem;
+      background-color: #343637;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      .block{
+        width: 32%;
+        height: 100%;
+        background-color: #d2d2d2;
+      }
+    }
+    .lower-info{
+      padding-bottom: 0.5rem;
+      width: 100%;
+      height: 10%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .credentials{
+        font-size: 16px;
+        color: @text-color-dark;
+        font-weight: 500;
+      }
+    }
+  }
+}
