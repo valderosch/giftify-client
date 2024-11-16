@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/giftify-client/static/css/main.eafc1ca1.css",
-    "main.js": "/giftify-client/static/js/main.416c548e.js",
+    "main.js": "/giftify-client/static/js/main.717fbb43.js",
     "static/media/mokc-img5.jpg": "/giftify-client/static/media/mokc-img5.3848e475cc720f5557d0.jpg",
     "static/media/mock-img6.jpg": "/giftify-client/static/media/mock-img6.0e919a8e76c8ae55125a.jpg",
     "static/media/mock-img2.jpg": "/giftify-client/static/media/mock-img2.c2c9344fa2dec0960860.jpg",
@@ -14,10 +14,10 @@
     "static/media/avatar1.png": "/giftify-client/static/media/avatar1.2b0badab3d84b040ca3b.png",
     "index.html": "/giftify-client/index.html",
     "main.eafc1ca1.css.map": "/giftify-client/static/css/main.eafc1ca1.css.map",
-    "main.416c548e.js.map": "/giftify-client/static/js/main.416c548e.js.map"
+    "main.717fbb43.js.map": "/giftify-client/static/js/main.717fbb43.js.map"
   },
   "entrypoints": [
     "static/css/main.eafc1ca1.css",
-    "static/js/main.416c548e.js"
+    "static/js/main.717fbb43.js"
   ]
 }
