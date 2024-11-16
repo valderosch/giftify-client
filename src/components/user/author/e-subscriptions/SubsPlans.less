@@ -1,0 +1,142 @@
+@import "../../../../utils/colors";
+
+.plans-section{
+  width: 75%;
+  min-height: 80%;
+  margin-top: 0.5rem;
+  border-radius: 0.5rem;
+  border: 2px solid @border-color-dark;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  .plans-title{
+    width: 74%;
+    height: 10%;
+    color: @white;
+    font-size: 18px;
+    font-weight: 600;
+  }
+  .plans-block{
+    width: 74%;
+    height: 80%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    .plan{
+      height: 100%;
+      width: 32%;
+      background-color: @accent-element-dark;
+      margin-left: 0.5%;
+      margin-right: 0.5%;
+      border-radius: 0.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      .plan-image{
+        width: 100%;
+        height: 33%;
+        background-color: #1a1a1a;
+        border-radius: 0.5rem 0.5rem 0 0;
+      }
+      .plan-level{
+        width: 100%;
+        height: 12%;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        font-weight: 500;
+        font-size: 16px;
+        color: @text-color-dark;
+        text-transform: uppercase;
+        .plan-level-value{
+          color: @primary-color;
+          margin: 2%;
+        }
+      }
+      .plan-content{
+        width: 95%;
+        height: 50%;
+        background-color: inherit;
+        margin-bottom: 0.5rem;
+        margin-top: 0.5rem;
+        border-radius: 0.5rem;
+        border: 1px solid @border-color-lighther;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        .plan-advantages{
+          width: 96%;
+          height: 80%;
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-start;
+          align-items: center;
+          overflow: hidden;
+          .advantage{
+            width: 90%;
+            height: 15%;
+            margin-top: 0.2rem;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            .adv-title{
+              width: 80%;
+              height: 100%;
+              text-align: left;
+              font-weight: 500;
+              color: @text-color-dark;
+              font-size: 15px;
+            }
+            .adv-flag{
+              width: 20%;
+              height: 100%;
+              color: @text-color-dark;
+              font-weight: 600;
+            }
+          }
+        }
+        .plan-confirm{
+          width: 96%;
+          height: 20%;
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+          align-items: flex-end;
+          margin-bottom: 0.5rem;
+          .plan-price{
+            width: 35%;
+            height: 90%;
+            color: @text-color-dark;
+            font-size: 16px;
+            font-weight: 600;
+            text-transform: uppercase;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }
+          .plan-button{
+            width: 50%;
+            height: 80%;
+            background-color: @primary-color;
+            color: @dark-element-dark;
+            font-size: 16px;
+            font-weight: 500;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            user-select: none;
+            text-decoration: none;
+            border-radius: 0.5rem;
+          }
+        }
+      }
+    }
+  }
+}
