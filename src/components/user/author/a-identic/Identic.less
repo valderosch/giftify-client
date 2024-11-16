@@ -46,19 +46,47 @@
       }
     }
     .id-user-name{
-      width: auto;
-      height: 10%;
-      background-color: @hover-element-transparent;
-      padding: 1%;
-      border-radius: 0.5rem;
-      justify-self: center;
       display: flex;
-      justify-content: center;
-      align-items: center;
-      color: @white;
-      font-size: 18px;
-      font-weight: 600;
-      text-shadow: @dark-element-dark 0 0 10px;
+      flex-direction: row;
+      justify-content: space-between;
+     .username-value{
+       width: auto;
+       height: 10%;
+       background-color: @hover-element-transparent;
+       padding: 3%;
+       border-radius: 0.5rem;
+       justify-self: center;
+       display: flex;
+       justify-content: center;
+       align-items: center;
+       color: @white;
+       font-size: 18px;
+       font-weight: 600;
+       text-shadow: @dark-element-dark 0 0 10px;
+     }
+      .profile-share{
+        margin-left: 0.5rem;
+        min-width: 2rem;
+        min-height: 2rem;
+        border: 2px solid @hover-element-transparent;
+        border-radius: 0.5rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: ease-in 0.1s ease-in;
+        .share-img{
+          width: 1.1rem;
+          height: 1.1rem;
+          transition: width 0.15s, height 0.15s ease-in;
+        }
+        &:hover{
+          border-color: @white;
+          .share-img{
+            width: 1.4rem;
+            height: 1.4rem;
+          }
+        }
+      }
     }
     .id-user-links{
       width: auto;

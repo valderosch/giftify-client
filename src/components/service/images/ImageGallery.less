@@ -1,0 +1,65 @@
+@import "../../../../src/utils/colors";
+
+.image-gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  background-color: @dark-element-dark;
+  border-radius: 0.5rem 0.5rem 0 0;
+}
+
+.single .single-image {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  border-radius: 0.5rem 0.5rem 0 0;
+}
+
+.double {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.double .double-image {
+  width: 50%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  border-radius: 0.5rem 0.5rem 0 0;
+}
+
+.triple .large-image {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 0.5rem 0.5rem 0 0;
+}
+
+.triple .small-images {
+  display: flex;
+  gap: 0.1rem;
+  border-radius: 0.5rem 0.5rem 0 0;
+}
+
+.triple .small-image {
+  width: 50%;
+  aspect-ratio: 1 / 1;
+  border-radius: 0.5rem 0.5rem 0 0;
+}
+
+.multiple .large-image {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 0.5rem 0.5rem 0 0;
+}
+
+.multiple .carousel {
+  display: flex;
+  overflow-x: auto;
+  gap: 0.1rem;
+}
+
+.multiple .carousel-image {
+  width: 5rem;
+  height: 5rem;
+  object-fit: cover;
+}

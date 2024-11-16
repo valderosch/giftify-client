@@ -1,0 +1,119 @@
+@import "../../../../utils/colors";
+
+.describer{
+  margin-top: 0.3rem;
+  width: 75%;
+  height: 10%;
+  border-radius: 0.5rem;
+  border: 2px solid @border-color-dark;
+  background-color: inherit;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  color: @text-color-dark;
+  font-size: 16px;
+  .dsc-short-desc{
+    max-width: 33%;
+    min-width: 33%;
+    margin-left: 2%;
+    height: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    font-weight: 600;
+    overflow: hidden;
+    white-space: nowrap;
+
+
+  }
+  .dsc-subs{
+    min-width: 30%;
+    height: 80%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+  .dsc-posts{
+    max-width: 20%;
+    min-width: 20%;
+    height: 80%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+  .dsc-subscribe-button{
+    max-width: 13%;
+    min-width: 13%;
+    height: 80%;
+    background-color: @primary-color;
+    color: @background-color-dark;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    user-select: none;
+    &:hover{
+      background-color: @primary-hover-color;
+    }
+  }
+  .dsc-subscription-level{
+    max-width: 13%;
+    min-width: 13%;
+    height: 80%;
+    background-color: @accent-element-dark;
+    color: @text-color-dark;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 0.5rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    user-select: none;
+    .dsc-sublevel-title{
+      width: 40%;
+      height: 80%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+    }
+    .dsc-sublevel-value{
+      width: 15%;
+      height: 80%;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      font-size: 18px;
+      transition: 0.2s text-shadow ease-in;
+    }
+    .dsc-sublevel-upgrade{
+      width: 1.4rem;
+      height: 1.4rem;
+      margin-left: 1%;
+      margin-right: 1%;
+      transition: 0.3s transform ease-in-out;
+    }
+    &:hover{
+      .dsc-sublevel-upgrade{
+        transform: translateY(-.3rem);
+      }
+      .dsc-sublevel-value{
+        text-shadow: @white 0 0 10px;
+      }
+    }
+  }
+  .dsc-value{
+    color: @white;
+    font-weight: 600;
+    margin-left: 1%;
+    margin-right: 2%;
+  }
+}

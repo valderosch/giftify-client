@@ -1,0 +1,259 @@
+@import "../../utils/colors";
+
+.notification{
+  width: 100%;
+  height: 85vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  .notifications-filter{
+    width: 20%;
+    height: 88%;
+    border:2px solid @border-color-dark;
+    border-radius: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    .nots-stats{
+      margin-top: 3%;
+      border-radius: 0.5rem;
+      width: 70%;
+      height: 35%;
+      background-color: @accent-element-dark;
+    }
+    .nots-filter{
+      margin-top: 0.5rem;
+      width: 100%;
+      height: 60%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .nots-filter-content{
+        width: 70%;
+        height: 90%;
+        border-radius: 0.5rem;
+        box-shadow: #394043 0 0 10px;
+        background-color: @accent-element-dark;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        .filter-head{
+          width: 90%;
+          height: 20%;
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          align-items: center;
+          .filter-title{
+            width: 60%;
+            height: 100%;
+            color: @text-color-dark;
+            font-size: 20px;
+            font-weight: 500;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+          }
+          .filter-reset{
+            color: @font-secondary;
+            width: 25%;
+            height: 60%;
+            font-weight: 500;
+            font-size: 18px;
+            border-radius: 0.5rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            &:hover{
+              background-color: #677579;
+              color: @text-color-dark;
+            }
+          }
+        }
+        .filter-body{
+          width: 90%;
+          height: 75%;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: flex-start;
+          .filter-user{
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            .filter-option{
+              margin-bottom: 1%;
+              width: 100%;
+              height: 20%;
+              display: flex;
+              flex-direction: row;
+              justify-content: flex-start;
+              align-items: center;
+              .filter-checkbox{
+                width: 1rem;
+                height: 1rem;
+                border-radius: 0.5rem;
+                cursor: pointer;
+                user-select: none;
+                accent-color: @primary-color;
+                border: 1px solid @font-secondary;
+                background-color: @accent-element-dark;
+              }
+              .filter-value{
+                width: 50%;
+                margin-left: 2%;
+                display: flex;
+                flex-direction: row;
+                justify-content: flex-start;
+                align-items: center;
+                font-size: 16px;
+                font-weight: 300;
+                color: @text-color-dark;
+              }
+              &:hover{
+                .filter-value{
+                  font-weight: 500;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  .notifications-main{
+    width: 68%;
+    height: 88%;
+    margin-left: 0.5rem;
+    border: 2px solid @border-color-dark;
+    border-radius: 0.5rem;
+    overflow: scroll;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    .nots-content{
+      width: 98%;
+      height: 98%;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      .nots-title{
+        margin-top: 3%;
+        width: 98%;
+        height: 7%;
+        font-size: 20px;
+        font-weight: 600;
+        color: @text-color-dark;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: flex-start;
+      }
+      .notifications-block{
+        width: 100%;
+        height: auto;
+        overflow-x: hidden;
+        overflow-y: scroll;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        .timesort-block{
+          width: 100%;
+          height: auto;
+          min-height: 20%;
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-start;
+          align-items: center;
+          .nots-divider{
+            width: 100%;
+            height: 10vh;
+            font-size: 18px;
+            font-weight: 600;
+            color: @text-color-dark;
+            display: flex;
+            justify-content: flex-start;
+            align-items: flex-end;
+            padding-bottom: 0.5rem;
+          }
+          .notification-item{
+            width: 100%;
+            height: 7vh;
+            background-color: @accent-element-dark;
+            margin-bottom: 0.4rem;
+            border-radius: 0.5rem;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            user-select: none;
+            transition: height 0.2s ease-in;
+            .img-category{
+              width: 2.5rem;
+              height: 2.5rem;
+              background-color: @primary-color;
+              border-radius: 3rem;
+            }
+            .notification-data{
+              width: 69%;
+              height: 80%;
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              align-items: flex-start;
+              margin-left: 1%;
+              .notification-title{
+                width: 100%;
+                height: 50%;
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                margin-right: 2%;
+                color: @text-color-dark;
+                font-size: 18px;
+                font-weight: 400;
+              }
+              .notification-message{
+                width: 100%;
+                height: 50%;
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                margin-right: 2%;
+                color: @text-color-dark;
+                font-size: 14px;
+                font-weight: 200;
+              }
+
+            }
+            .notification-date{
+              width: 22%;
+              height: 50%;
+              display: flex;
+              justify-content: flex-end;
+              align-items: center;
+              margin-right: 2%;
+              color: @text-color-dark;
+              font-size: 16px;
+              font-weight: 300;
+            }
+            &:hover{
+              height: 10vh;
+            }
+          }
+        }
+      }
+    }
+  }
+}
