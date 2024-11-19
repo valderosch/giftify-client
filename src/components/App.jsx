@@ -29,7 +29,7 @@ function App() {
                     <Route path="/create" element={<CreatePost role={userRole}/>}/>
                     <Route path="/notifications" element={<Notification/>} />
                     <Route path="/chats" element={<Chats/>} />
-                    <Route path="/user/a" element={<UserPage user={user} role = {userRole}/>} />
+                    <Route path={`/user/${user.username}`} e    lement={<UserPage user={user} role = {userRole}/>} />
                     <Route path="*" element={<Navigate to="/" />} />
                 </Routes>
             </div>

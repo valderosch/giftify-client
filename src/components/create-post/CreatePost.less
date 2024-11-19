@@ -212,19 +212,20 @@
       border-radius: 0.5rem;
       .image-carousel{
         width: 98%;
-        height: 25%;
-        background-color: inherit;
+        height: 20%;
         padding: 1%;
         overflow-x: scroll;
         overflow-y: hidden;
         gap: 0.5rem;
         display: flex;
         flex-direction: row;
-        justify-content: flex-end;
+        justify-content: flex-start;
         align-items: center;
         .carousel-image{
-          width: 30%;
-          height: 90%;
+          max-width: 30%;
+          max-height: 90%;
+          min-width: 15%;
+          min-height: 90%;
           position: relative;
           background-color: @dark-element-dark;
           border-radius: 0.5rem;
@@ -232,42 +233,108 @@
           flex-direction: column;
           justify-content: center;
           align-items: center;
+          overflow: hidden;
           .image-block{
             width: 100%;
-            height: 90%;
-            background-color: #99CBF9;
-          }
-          .img-img{
-            width: 100%;
             height: 100%;
-            min-width: 4rem;
-            min-height: 4rem;
-            aspect-ratio: 1 / 1;
-            background-color: @accent-element-dark;
+            background-color: #99CBF9;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1;
+            .img-img{
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              width: 100%;
+              height: 100%;
+              aspect-ratio: 1 / 1;
+              background-color: @accent-element-dark;
+            }
           }
           .image-controls{
             width: 100%;
             height: 30%;
+            position: absolute;
+            top: 0;
+            z-index: 2;
             display: flex;
             flex-direction: row;
             justify-content: center;
-            align-items: flex-end;
+            align-items: center;
+            opacity: 0;
             .img-btn{
               width: 28%;
               height: 100%;
               margin-left: 0.1rem;
               color: @primary-hover-color;
-
-              background-color: rbga(0,0,0,0.1);
+              border: 0;
+              outline: 0;
+              font-size: 16px;
+              background-color: rgba(0,0,0, 0.1);
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              cursor: pointer;
+              user-select: none;
             }
           }
+          &:hover{
+            .image-controls{
+              opacity: 1;
+            }
+            border: 2px solid @primary-color;
+          }
+        }
+
+      }
+      .title-editor{
+        width: 100%;
+        height: 10%;
+        background-color: @dark-element-dark;
+        border-top: 2px solid @border-color-dark;
+        border-bottom: 2px solid @border-color-dark;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+        .image-add{
+          width: 9%;
+          height: 100%;
+          border-right: 1px solid @border-color-dark;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          .image-input{
+            width: 68%;
+            height: 70%;
+            aspect-ratio: 1/1;
+            border-radius: 50%;
+            background-color: @dark-element-dark;
+            color: @white;
+            outline: 0;
+            border: 2px solid @primary-color;
+          }
+        }
+        .post-title{
+          margin-left: 2%;
+          width: 88%;
+          height: 70%;
+          border: 0;
+          outline: 0;
+          overflow: hidden;
+          color: @text-color-dark;
+          background-color: @dark-element-dark;
+          font-size: 16px;
+          font-weight: 600;
         }
 
       }
       .text-editor {
         width: 100%;
         min-height: 200px;
-        height: 65%;
+        height: 60%;
         background-color: @accent-element-dark;
         border-color: transparent;
         color: @white;
@@ -297,6 +364,7 @@
         flex-direction: column;
         .title{
           margin-top: 2%;
+          margin-bottom: 2%;
           width: 96%;
           height: 5%;
           font-size: 20px;
@@ -314,6 +382,7 @@
           text-align: left;
         }
       }
+
     }
   }
 }

@@ -3,6 +3,7 @@ import Quill from 'quill';
 import 'quill/dist/quill.snow.css';
 import './CreatePost.css';
 import ImageGallery from "../service/images/Imagegallery";
+import {getValue} from "@testing-library/user-event/dist/utils";
 
 const CreatePost = ({ role }) => {
     const [content, setContent] = useState('');
@@ -10,6 +11,7 @@ const CreatePost = ({ role }) => {
     const [images, setImages] = useState([]);
     const [draggedIndex, setDraggedIndex] = useState(null);
     const [postSettings, setPostSettings] = useState([]);
+    const [postTitle, setPostTitle] = useState('Your post title');
     const quillRef = useRef(null);
     const quillInstance = useRef(null);
 
@@ -76,6 +78,10 @@ const CreatePost = ({ role }) => {
         setDraggedIndex(null);
     };
 
+    const handleTitle  = () => {
+        setPostTitle(postTitle);
+    }
+
     return (
         <div className="create-post">
             {role === 'author' ? (
@@ -119,17 +125,22 @@ const CreatePost = ({ role }) => {
                                     onDragOver={handleDragOver}
                                     onDrop={() => handleDrop(index)}
                                 >
-                                    <div className="image-bock">
-                                        <img className="img-img" src={src} alt="Uploaded" />
-                                    </div>
                                     <div className="image-controls">
                                         <button className="img-btn" onClick={() => moveImage(index, -1)}>⬅️</button>
                                         <button className="img-btn" onClick={() => handleImageRemove(index)}>🗑️</button>
                                         <button className="img-btn" onClick={() => moveImage(index, 1)}>➡️</button>
                                     </div>
+                                    <div className="image-block">
+                                        <img className="img-img" src={src} alt="Uploaded" />
+                                    </div>
                                 </div>
                             ))}
-                            <input type="file" multiple onChange={handleImageUpload} />
+                        </div>
+                        <div className="title-editor">
+                            <div className="image-add">
+                                <input type="file" className="image-input" placeholder="⁂" multiple onChange={handleImageUpload}></input>
+                            </div>
+                            <input type="text" className="post-title" value={postTitle} onChange={handleTitle}/>
                         </div>
                         <div ref={quillRef} className="text-editor"></div>
                     </div>
@@ -137,14 +148,13 @@ const CreatePost = ({ role }) => {
                     <div className="preview-container">
                         <div className="preview-post-body">
                             <ImageGallery images={images} />
-                            <div className="title">Your cool post</div>
+                            <div className="title">{postTitle}</div>
                             <div className="preview-content-text" dangerouslySetInnerHTML={{ __html: previewContent }} />
                         </div>
                     </div>
                 </div>
             ) : (
                 <div className="become-author-banner">
-                    {/* Інші елементи */}
                 </div>
             )}
         </div>

@@ -13,13 +13,13 @@ const Header = ({user, userRole}) => {
                     <img className="logo-icon" src={logoImage} alt = "apple"/>
                     <div className="logo-title">GIFT<div className="dot">.</div>fy</div>
                 </Link>
-                <div className="user-block">
+                <Link to={`/user/${user.username}`} className="user-block">
                     <img className={`user-icon ${userRole}`} src={user.avatar} alt="human" />
                     <div className="user-identical">
                         <div className="username">{user.username}</div>
                         <div className={`user-role ${userRole}`}>{userRole}</div>
                     </div>
-                </div>
+                </Link>
                 <div className="settings-link">
                     <img className="settings-icon" src={settingsImage} alt="settings"/>
                 </div>
