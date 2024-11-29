@@ -1,0 +1,165 @@
+@import "../../../../utils/colors";
+
+.donation-popup{
+  position: fixed;
+  width: 100%;
+  height: 90%;
+  top: 10%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.45);
+  z-index: 6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .popup-body{
+    width: 45%;
+    height: 50%;
+    background-color: @background-color-dark;
+    border:2px solid @primary-color;
+    border-radius: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding-top: 2%;
+    .popup-title{
+      width: 90%;
+      height: 10%;
+      color: @white;
+      font-weight: 600;
+      font-size: 18px;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+    }
+    .popup-descr{
+      width: 90%;
+      height: 10%;
+      color: @text-color-dark;
+      font-weight: 500;
+      font-size: 16px;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+    }
+    .donation-block{
+      width: 90%;
+      height: 70%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .message-area{
+        width: 63%;
+        height: 100%;
+        border-radius: 0.5rem;
+        overflow: hidden;
+        border: 2px solid @border-color-dark;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        .area{
+          color: @text-color-dark;
+          border-radius: 0.5rem;
+          border: 0;
+          outline: 0;
+          padding: 0.2rem;
+          width: 96%;
+          height: 84%;
+          background-color: @accent-element-dark;
+        }
+        .label{
+          width: 96%;
+          height: 10%;
+          font-size: 14px;
+          color: @text-color-dark;
+          text-align: start;
+          display: flex;
+        }
+      }
+      .donate-area{
+        width: 35%;
+        height: 100%;
+        border-radius: 0.5rem;
+        overflow: hidden;
+        border: 2px solid @border-color-dark;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        .user-balance{
+          width: 90%;
+          height: 30%;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: flex-start;
+          .actual, .predict{
+            width: 100%;
+            height: 40%;
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: center;
+            color: @text-color-dark;
+            font-size: 16px;
+            font-weight: 500;
+            .balance{
+              font-weight: 600;
+              color: @white;
+              overflow: hidden;
+            }
+          }
+        }
+        .donate-amount{
+          margin-top: 20%;
+          width: 90%;
+          height: 10%;
+          border: 0;
+          outline: 0;
+          border-radius: 0.2rem;
+        }
+        .submittion{
+          width: 90%;
+          height: 30%;
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-end;
+          .submitted{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            .label{
+              width: 90%;
+              color: @text-color-dark;
+              font-size: 16px;
+              text-align: start;
+            }
+            .submit{
+              width: 10%;
+              background-color: @primary-color;
+            }
+            margin-bottom: 2%;
+          }
+
+          .donate-button-body{
+            width: 100%;
+            height: 50%;
+            background-color: @primary-color;
+            color: @background-color-dark;
+            font-size: 18px;
+            font-weight: 600;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 0.2rem;
+            cursor: pointer;
+            user-select: none;
+          }
+        }
+      }
+    }
+  }
+}

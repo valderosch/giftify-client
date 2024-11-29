@@ -3,11 +3,13 @@ import "./Actions.css";
 import goalImg from "../../../../assets/icons/profile/ui-goal.png";
 import expandImg from "../../../../assets/icons/profile/ui-expand.png";
 import giftImg from "../../../../assets/icons/profile/ui-gift.png";
+import Donation from "../../../service/popups/donation/Donation";
 
 
 const Actions = ({user}) => {
     const [activeGoal, setActiveGoal] = useState(1);
     const [expandedGoal, setExpandedGoal] = useState(null);
+    const [donationPopup, setDonationPopup] = useState(false);
 
     const goals = [
         {id:1, title: "Buy me a PS5", description: "Lets buy me a PS5 please." +
@@ -30,6 +32,10 @@ const Actions = ({user}) => {
     const toggleExpanded = (id) => {
         setExpandedGoal(expandedGoal === id ? null : id);
     };
+
+    const togglePopup = () => {
+        setDonationPopup(!donationPopup)
+    }
 
     return (
         <div className="actions">
@@ -102,11 +108,14 @@ const Actions = ({user}) => {
                             Send a little gift for author, you like.
                         </div>
                     </div>
-                    <div className="bid-button">
+                    <div className="bid-button" onClick={togglePopup}>
                         <img src={giftImg} alt="bid" className="bid-icon"/>
                     </div>
                 </div>
             </div>
+            { donationPopup && (
+             <Donation toggle={togglePopup} balance = {user.balance}/>
+            )}
         </div>
     );
 };

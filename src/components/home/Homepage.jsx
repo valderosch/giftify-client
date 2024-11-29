@@ -10,6 +10,7 @@ import mockImg from "../../assets/icons/mock/mock-img2.jpg";
 import mockImg2 from "../../assets/icons/mock/mock-img1.png";
 import DonationGoal from "./feed/donation/DonationGoal";
 import RecommendationBlock from "./feed/recomendation/RecomendationBlock";
+import ReportElement from "../service/popups/report/ReportElement";
 
 
 

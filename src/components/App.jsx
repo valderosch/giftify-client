@@ -14,7 +14,7 @@ import CreatePost from "./create-post/CreatePost";
 import UserPage from "./user/UserPage";
 
 function App() {
-    const user = {username: "my_own_name885", avatar: avatar, roles: ['user', 'author']}
+    const user = {username: "my_own_name885", avatar: avatar, roles: ['user', 'author'], balance: 1560}
     const userRole = user.roles.includes('author') ? 'author' : 'user';
     const isLoggedIn = true;
   return (
@@ -29,7 +29,7 @@ function App() {
                     <Route path="/create" element={<CreatePost role={userRole}/>}/>
                     <Route path="/notifications" element={<Notification/>} />
                     <Route path="/chats" element={<Chats/>} />
-                    <Route path={`/user/${user.username}`} e    lement={<UserPage user={user} role = {userRole}/>} />
+                    <Route path={`/user/${user.username}`} element={<UserPage user={user} role = {userRole}/>} />
                     <Route path="*" element={<Navigate to="/" />} />
                 </Routes>
             </div>

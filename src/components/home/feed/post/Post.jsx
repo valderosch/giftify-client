@@ -1,13 +1,20 @@
-import React from 'react';
+import React, {useState} from 'react';
 import "./Post.css";
 import likeIcon from "../../../../assets/icons/ui/like.png";
 import commIcon from "../../../../assets/icons/ui/comm.png";
 import saveIcon from "../../../../assets/icons/ui/save.png";
 import shareIcon from "../../../../assets/icons/ui/share.png";
 import reportIcon from "../../../../assets/icons/ui/issue.png";
+import ReportElement from "../../../service/popups/report/ReportElement";
+
 
 
 const Post = (props) => {
+    const [reportPopup, setReportPopup] = useState(false);
+
+    const handleReport = () => {
+        setReportPopup(!reportPopup);
+    }
 
     return (
         <div className="post">
@@ -48,11 +55,18 @@ const Post = (props) => {
                     </div>
                     <div className="control-block">
                         <img className="share-button" src={shareIcon} alt="share"/>
-                        <img className="report-button" src={reportIcon} alt="report"/>
+                        <img className="report-button"
+                             src={reportIcon} alt="report"
+                             onClick={handleReport}
+
+                        />
                         <div className="options-button">•••</div>
                     </div>
                 </div>
             </div>
+            { reportPopup && (
+                <ReportElement/>
+            )}
         </div>
     );
 };

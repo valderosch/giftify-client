@@ -1,12 +1,13 @@
-import React from 'react';
+import React, {useState} from 'react';
 import "./DonationGoal.css";
 import { formatNumber } from "../../../../lib/service/formatNumber";
 import currencyIcon from "../../../../assets/logos/bit4.png"
+import ReportElement from "../../../service/popups/report/ReportElement";
 
 
 const DonationGoal = ({ image, author, authorimg, title, date, description, goalAmount, currentAmount }) => {
     const progressPercentage = Math.min((currentAmount / goalAmount) * 100, 100);
-
+    const [reportPopup, setReportPopup] = useState(false);
     return (
         <div className="donation-goal">
             <div className="post-attribution">
@@ -46,6 +47,9 @@ const DonationGoal = ({ image, author, authorimg, title, date, description, goal
                     </div>
                 </div>
             </div>
+            { reportPopup && (
+                <ReportElement/>
+            )}
         </div>
     );
 };
