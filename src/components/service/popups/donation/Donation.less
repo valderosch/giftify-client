@@ -15,7 +15,7 @@
   align-items: center;
   .popup-body{
     width: 45%;
-    height: 50%;
+    height: 55%;
     background-color: @background-color-dark;
     border:2px solid @primary-color;
     border-radius: 0.5rem;
@@ -24,15 +24,34 @@
     justify-content: flex-start;
     align-items: center;
     padding-top: 2%;
-    .popup-title{
+    .popup-header{
       width: 90%;
       height: 10%;
-      color: @white;
-      font-weight: 600;
-      font-size: 18px;
       display: flex;
-      justify-content: flex-start;
+      justify-content: space-between;
       align-items: center;
+      .popup-title{
+        width: 90%;
+        height: 100%;
+        color: @white;
+        font-weight: 600;
+        font-size: 18px;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+      }
+      .close-button{
+        width: 10%;
+        height: 100%;
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-end;
+        color: @text-color-dark;
+        cursor: pointer;
+        user-select: none;
+        text-decoration: none;
+        font-size: 26px;
+      }
     }
     .popup-descr{
       width: 90%;
@@ -60,6 +79,27 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        .area-upper{
+          width: 96%;
+          height: 10%;
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          .label{
+            width: 70%;
+            height: 100%;
+            font-size: 14px;
+            color: @text-color-dark;
+            text-align: start;
+            display: flex;
+          }
+          .char-limit{
+            font-size: 14px;
+            color: @text-color-dark;
+            text-align: start;
+            display: flex;
+          }
+        }
         .area{
           color: @text-color-dark;
           border-radius: 0.5rem;
@@ -69,14 +109,6 @@
           width: 96%;
           height: 84%;
           background-color: @accent-element-dark;
-        }
-        .label{
-          width: 96%;
-          height: 10%;
-          font-size: 14px;
-          color: @text-color-dark;
-          text-align: start;
-          display: flex;
         }
       }
       .donate-area{
@@ -113,8 +145,21 @@
             }
           }
         }
+        .error-message{
+          width: 90%;
+          height: 10%;
+          color: #efef69;
+          font-size: 13px;
+          display: flex;
+          justify-content: center;
+          align-items: flex-end;
+        }
+        .empty-message{
+          width: 90%;
+          height: 10%;
+        }
         .donate-amount{
-          margin-top: 20%;
+          margin-top: 10%;
           width: 90%;
           height: 10%;
           border: 0;

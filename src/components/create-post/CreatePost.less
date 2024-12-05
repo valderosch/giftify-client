@@ -306,7 +306,13 @@
           display: flex;
           justify-content: center;
           align-items: center;
+          .inputimg{
+            width: 73%;
+            height: 74%;
+            cursor: pointer;
+          }
           .image-input{
+            display: none;
             width: 68%;
             height: 70%;
             aspect-ratio: 1/1;
@@ -334,11 +340,109 @@
       .text-editor {
         width: 100%;
         min-height: 200px;
-        height: 60%;
+        height: 50%;
         background-color: @accent-element-dark;
         border-color: transparent;
         color: @white;
         overflow: scroll;
+      }
+      .file-input{
+        width: 100%;
+        height: 10%;
+        max-height: 10%;
+        //overflow: hidden;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        .file-add{
+          width: 20%;
+          height: 80%;
+          display: flex;
+          justify-content: flex-end;
+          align-items: flex-end;
+          .fileinp-btn{
+            width: 90%;
+            height: 65%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 0.4rem;
+            padding: 0.3rem;
+            color: @text-color-dark;
+            font-size: 14px;
+            font-weight: 500;
+            border: 2px solid @border-color-dark;
+            cursor: pointer;
+            user-select: none;
+            text-decoration: none;
+            transition: color 0.1s, border 0.1s ease-in;
+            .add-file-img{
+              width: 2rem;
+              height: 2rem;
+              transform: rotate(45deg);
+              transition: transform 0.1s ease-in;
+            }
+            &:hover{
+              border-color: @primary-color;
+              color: @primary-color;
+              .add-file-img{
+                transform: rotate(75deg);
+              }
+            }
+          }
+          .file-input-field{
+            display: none;
+          }
+        }
+        .file-gallery{
+          width: 78%;
+          height: 90%;
+          display: flex;
+          flex-direction: row;
+          justify-content: flex-start;
+          align-items: center;
+          .file-item{
+            margin-left: 1%;
+            width: 33%;
+            height: 90%;
+            border-radius: 0.3rem;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            background-color: @accent-element-dark;
+            .filename{
+              width: 70%;
+              height: 80%;
+              margin-left: 7%;
+              overflow: hidden;
+              display: flex;
+              justify-content: flex-start;
+              align-items: center;
+              white-space: nowrap;
+              user-select: none;
+              color: @text-color-dark;
+            }
+            .file-delete-btn{
+              width: 25%;
+              height: 80%;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              border-radius: 0.5rem;
+              color: @text-color-dark;
+              font-size: 22px;
+              font-weight: 600;
+              cursor: pointer;
+              user-select: none;
+              text-decoration: none;
+              &:hover{
+                color: @primary-color;
+              }
+            }
+          }
+        }
       }
     }
     .preview-container{
@@ -380,6 +484,50 @@
           color: @white;
           font-size: 16px;
           text-align: left;
+        }
+        .file-gallery{
+          width: 100%;
+          height: 15%;
+          overflow: hidden;
+          display: flex;
+          flex-direction: row;
+          justify-content: flex-start;
+          align-items: flex-start;
+          margin-bottom: 2%;
+          padding-top: 2%;
+          .file-item{
+            margin-left: 1%;
+            width: 30%;
+            height: 90%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 2px solid;
+            background-color: @dark-element-dark;
+            .doc-icon{
+              max-width: 1.5rem;
+              max-height: 1.5rem;
+              background-color: @primary-color;
+              padding: 0.2rem;
+              border-radius: 0.2rem;
+              user-select: none;
+            }
+            .filename{
+              width: 75%;
+              height: 80%;
+              overflow: hidden;
+              margin-left: 3%;
+              font-size: 14px;
+              font-weight: 400;
+              cursor: pointer;
+              display: flex;
+              justify-content: flex-start;
+              align-items: center;
+              color: @white;
+              white-space: nowrap;
+              user-select: none;
+            }
+          }
         }
       }
 
@@ -487,4 +635,22 @@
 .ql-snow .ql-picker-item:hover,
 .ql-snow .ql-picker-label:hover {
   color: @primary-hover-color;
+}
+
+
+.no-access-screen{
+  width: 100%;
+  height: 110vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: @background-color-dark;
+  align-items: center;
+}
+.text-editor-broke{
+  width: 10%;
+  height: 10%;
+  margin-top: 80%;
+  opacity: 0.1;
 }

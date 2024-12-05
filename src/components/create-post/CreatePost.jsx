@@ -3,15 +3,20 @@ import Quill from 'quill';
 import 'quill/dist/quill.snow.css';
 import './CreatePost.css';
 import ImageGallery from "../service/images/Imagegallery";
+import fileImg from "../../assets/icons/ui/pin.png";
 import {getValue} from "@testing-library/user-event/dist/utils";
+import Access from "../service/access/Access";
+import fileicon from '../../assets/icons/ui/document.png';
 
 const CreatePost = ({ role }) => {
     const [content, setContent] = useState('');
     const [previewContent, setPreviewContent] = useState('');
     const [images, setImages] = useState([]);
+    const [files, setFiles] = useState([]);
+    const [fileCount, setFileCount] = useState(0);
     const [draggedIndex, setDraggedIndex] = useState(null);
     const [postSettings, setPostSettings] = useState([]);
-    const [postTitle, setPostTitle] = useState('Your post title');
+    const [postTitle, setPostTitle] = useState('');
     const quillRef = useRef(null);
     const quillInstance = useRef(null);
 
@@ -78,8 +83,25 @@ const CreatePost = ({ role }) => {
         setDraggedIndex(null);
     };
 
-    const handleTitle  = () => {
-        setPostTitle(postTitle);
+    const handleFileUpload = (event) => {
+        const newFiles = Array.from(event.target.files);
+
+        if (fileCount + newFiles.length > 3) {
+            alert('You can only upload up to 3 files.');
+            return;
+        }
+
+        setFiles([...files, ...newFiles]);
+        setFileCount(fileCount + newFiles.length);
+    };
+    const handleRemoveFile = (index) => {
+        const updatedFiles = files.filter((_, i) => i !== index);
+        setFiles(updatedFiles);
+        setFileCount(fileCount - 1);
+    };
+
+    const handleTitle  = (event) => {
+        setPostTitle(event.target.value);
     }
 
     return (
@@ -138,11 +160,46 @@ const CreatePost = ({ role }) => {
                         </div>
                         <div className="title-editor">
                             <div className="image-add">
-                                <input type="file" className="image-input" placeholder="⁂" multiple onChange={handleImageUpload}></input>
+                                <label htmlFor="fileinput" >
+                                    <img src={fileImg} alt="" className="inputimg"/>
+                                </label>
+                                <input
+                                    type="file" className="image-input" id="fileinput"
+                                    placeholder="⁂" multiple onChange={handleImageUpload}
+                                    accept="image/png, image/jpeg"
+                                ></input>
                             </div>
-                            <input type="text" className="post-title" value={postTitle} onChange={handleTitle}/>
+                            <input
+                                type="text"
+                                className="post-title"
+                                value={postTitle}
+                                onChange={handleTitle}
+                                placeholder="Enter post title"
+                            />
                         </div>
                         <div ref={quillRef} className="text-editor"></div>
+                        <div className="file-input">
+                            <div className="file-add">
+                                <label htmlFor="fileupload" className="fileinp-btn">
+                                    Add Files <img src={fileImg} alt="file" className="add-file-img"/>
+                                </label>
+                                <input
+                                    type="file"
+                                    id="fileupload"
+                                    multiple
+                                    onChange={handleFileUpload}
+                                    className="file-input-field"
+                                />
+                            </div>
+                            <div className="file-gallery">
+                                {files.map((file, index) => (
+                                    <div key={index} className="file-item">
+                                        <span className="filename">{file.name}</span>
+                                        <div onClick={() => handleRemoveFile(index)} className="file-delete-btn">×</div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
                     </div>
 
                     <div className="preview-container">
@@ -150,11 +207,21 @@ const CreatePost = ({ role }) => {
                             <ImageGallery images={images} />
                             <div className="title">{postTitle}</div>
                             <div className="preview-content-text" dangerouslySetInnerHTML={{ __html: previewContent }} />
+                            <div className="file-gallery">
+                                {files.map((file, index) => (
+                                    <div key={index} className="file-item">
+                                        <img src={fileicon} alt="files" className="doc-icon"/>
+                                        <span className="filename">{file.name}</span>
+                                    </div>
+                                ))}
+                            </div>
                         </div>
                     </div>
                 </div>
             ) : (
-                <div className="become-author-banner">
+                <div className="no-access-screen">
+                    <Access/>
+                    <div ref={quillRef} className="text-editor-broke" style={{display: "none"}}></div>
                 </div>
             )}
         </div>

@@ -1,0 +1,345 @@
+@import "../../../../utils/colors";
+
+.goal-popup{
+  position: fixed;
+  width: 100%;
+  height: 90%;
+  top: 10%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.45);
+  z-index: 6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .g-popup-body {
+    width: 60%;
+    height: 80%;
+    background-color: @background-color-dark;
+    border: 2px solid @primary-color;
+    border-radius: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding-top: 1%;
+
+    .g-popup-header {
+      padding-bottom: 1%;
+      width: 90%;
+      height: 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .popup-title {
+        width: 90%;
+        height: 100%;
+        color: @white;
+        font-weight: 600;
+        font-size: 18px;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+      }
+
+      .close-button {
+        width: 10%;
+        height: 100%;
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-end;
+        color: @text-color-dark;
+        cursor: pointer;
+        user-select: none;
+        text-decoration: none;
+        font-size: 26px;
+      }
+    }
+
+    .goal-content{
+      width: 100%;
+      height: 65%;
+      overflow: hidden;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      flex-direction: column;
+      .goal-credential{
+        width: 90%;
+        height: 10%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        .author-credential{
+          height: 90%;
+          border-radius: 0.5rem;
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+          align-items: center;
+          padding-left: 0.8%;
+          padding-right: 0.8%;
+          text-decoration: none;
+          background-color: @dark-element-dark;
+          border: 2px solid @border-color-dark;
+          .user-img{
+            width: 1.7rem;
+            height: 1.7rem;
+            background-color: @primary-color;
+            border-radius: 0.2rem;
+            user-select: none;
+          }
+          .user-name{
+            height: 96%;
+            color: @text-color-dark;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 5%;
+            text-decoration: none;
+            user-select: none;
+            cursor: pointer;
+          }
+        }
+        .goal-date{
+          height: 90%;
+          background-color: @accent-element-dark;
+          color: @text-color-dark;
+          font-size: 15px;
+          font-weight: 300;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border-radius: 0.5rem;
+          padding-left: 0.5%;
+          padding-right: 0.5%;
+          margin-left: 1%;
+        }
+      }
+      .goal-description-block{
+        padding-top: 3%;
+        padding-bottom: 3%;
+        width: 90%;
+        height: 90%;
+        overflow: scroll;
+        .description-with-image{
+          width: 100%;
+          height: auto;
+          display: block;
+
+        }
+        .goal-image{
+          float: left;
+          margin-right: 5%;
+          margin-bottom: 1%;
+          max-width: 50%;
+          aspect-ratio: 16/9;
+          object-fit: cover;
+          height: auto;
+          border-radius: 0.5rem;
+          overflow: hidden;
+          background-color: @dark-element-dark;
+        }
+        .goal-description-text-noimg,
+        .goal-description-text {
+          color: @text-color-dark;
+          font-size: 16px;
+          font-weight: 300;
+        }
+        .goal-description-text-noimg {
+          float: left;
+        }
+      }
+    }
+
+    .goal-controls{
+      width: 100%;
+      height: 30%;
+      display: flex;
+      background-color: @background-color-dark;
+      justify-content: flex-start;
+      align-items: center;
+      flex-direction: column;
+      border-top: 1px solid @primary-color;
+      .progress-block{
+        width: 100%;
+        height: 40%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: row;
+        .current-value, .target-value{
+          width: 10%;
+          height: 80%;
+          color: @text-color-dark;
+          font-weight: 600;
+          font-size: 16px;
+          display: flex;
+          justify-content: center;
+          align-items: flex-end;
+        }
+        .progressbar-block{
+          width: 80%;
+          height: 80%;
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-end;
+          align-items: flex-start;
+          .percentage{
+            width: 10%;
+            height: 65%;
+            background-color: @white;
+            border-radius: 0.5rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: 600;
+            font-size: 16px;
+            margin-bottom: 1%;
+          }
+          .progressbar{
+            width: 100%;
+            height: 15%;
+            background-color: @dark-element-dark;
+            border-radius: 0.5rem;
+          }
+          .progress{
+            height: 100%;
+            border-radius: 0.5rem;
+            background-color: @primary-color;
+          }
+        }
+      }
+      .g-donation-block{
+        width: 100%;
+        height: 60%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+        .user-balance{
+          width: 20%;
+          height: 80%;
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-end;
+          align-items: flex-start;
+          .actual, .predict{
+            width: 100%;
+            height: 40%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            color: @text-color-dark;
+            font-size: 16px;
+            font-weight: 500;
+            .balance{
+              width: 60%;
+              height: 100%;
+              font-weight: 600;
+              color: @white;
+              overflow: hidden;
+              display: flex;
+              justify-content: flex-start;
+              align-items: center;
+            }
+          }
+        }
+        .value-handler{
+          width: 50%;
+          height: 80%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          .error-message{
+            width: 94%;
+            height: 38%;
+            color: #efef69;
+            font-size: 14px;
+            display: flex;
+            justify-content: flex-start;
+            align-items: flex-end;
+            padding-bottom: 1%;
+          }
+          .donate-amount{
+            width: 90%;
+            height: 60%;
+            background-color: @dark-element-dark;
+            outline: 0;
+            border: 0;
+            padding-left: 5%;
+            color: @white;
+            font-weight: 700;
+            font-size: 16px;
+            border-radius: 0.4rem;
+            &:focus{
+              border: 2px solid @primary-color;
+            }
+          }
+        }
+        .submittion{
+          width: 20%;
+          height: 80%;
+          display: flex;
+          justify-content: flex-end;
+          align-items: center;
+          flex-direction: column;
+          .submitted{
+            width: 94%;
+            height: 35%;
+            border: 1px solid @border-color-dark;
+            border-radius: 0.2rem;
+            margin-bottom: 3%;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            .label{
+              font-size: 14px;
+              font-weight: 500;
+              color: @text-color-dark;
+            }
+            #agree{
+              width: 10%;
+              height: 50%;
+              background-color: yellow;
+            }
+          }
+          .donate-button-body{
+            margin-bottom: 1%;
+            width: 94%;
+            height: 50%;
+            border: 3px solid @primary-color;
+            border-radius: 0.2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: row;
+            color: @white;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            user-select: none;
+            .btn-currency{
+              margin-left: 6%;
+              width: 1.5rem;
+              height: 1.5rem;
+            }
+            &:hover{
+              .btn-currency{
+                margin-left: 2%;
+              }
+            }
+          }
+        }
+
+      }
+    }
+  }
+}
