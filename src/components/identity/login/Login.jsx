@@ -23,17 +23,17 @@ const Login = () => {
                     <div className="fields">
                         <div className="form-block">
                             <div className="form-label">Username or Email</div>
-                            <div className="form-input">Custom input here</div>
+                            <input type="text" required={true} placeholder="login or mail" className="form-input"></input>
                         </div>
                         <div className="form-block">
                             <div className="form-label">Password</div>
-                            <div className="form-input">Custom input here</div>
+                            <input type="text" required={true} placeholder="password" className="form-input"></input>
                         </div>
                     </div>
                     <div className="confirmation">
                         <div className="login-button">Confirm</div>
                         <div className="recover-button">Forgot password?<br/>
-                        Make a <Link to="/register" className="recover-link">RECOVER</Link></div>
+                        Make a <Link to="/recover" className="recover-link">RECOVER</Link></div>
                     </div>
                     <div className="login-braker">OR</div>
                     <div className="login-lower">

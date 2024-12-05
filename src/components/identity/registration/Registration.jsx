@@ -23,19 +23,19 @@ const Registration = () => {
                     <div className="reg-fields">
                         <div className="reg-form-block">
                             <div className="form-label">Username</div>
-                            <div className="form-input">Custom input here</div>
+                            <input type="text" required={true} placeholder="login" className="form-input"></input>
                         </div>
                         <div className="reg-form-block">
                             <div className="form-label">Email</div>
-                            <div className="form-input">Custom input here</div>
+                            <input type="text" required={true} placeholder="email" className="form-input"></input>
                         </div>
                         <div className="reg-form-block">
                             <div className="form-label">Password</div>
-                            <div className="form-input">Custom input here</div>
+                            <input type="text" required={true} placeholder="password" className="form-input"></input>
                         </div>
                         <div className="reg-form-block">
                             <div className="form-label">Confirm password</div>
-                            <div className="form-input">Custom input here</div>
+                            <input type="text" required={true} placeholder="password one more time confirm" className="form-input"></input>
                         </div>
                     </div>
                     <div className="form-braker">OR</div>

@@ -121,16 +121,23 @@
           }
           .form-input{
             margin-top: 2%;
-            width: 100%;
+            width: 96%;
             height: 74%;
             border: 2px solid @border-color-dark;
             border-radius: 0.4rem;
-            color: @border-color-dark;
+            color: @white;
             text-align: left;
             display: flex;
             flex-direction: row;
             justify-content: center;
             align-items: center;
+            background-color: @background-color-dark;
+            font-size: 16px;
+            padding-left: 3%;
+            outline: 0;
+            &:focus{
+              border-color: @primary-color;
+            }
           }
         }
       }

@@ -1,7 +1,6 @@
 import './App.css';
 import Header from "./service/header/Header";
 import Navigator from "./service/navigator/Navigator";
-import Footer from "./service/footer/Footer";
 import Login from "./identity/login/Login";
 import Registration from "./identity/registration/Registration";
 import Homepage from "./home/Homepage";
@@ -12,11 +11,12 @@ import Search from "./search/Search";
 import avatar from "../assets/icons/mock/avatar1.png";
 import CreatePost from "./create-post/CreatePost";
 import UserPage from "./user/UserPage";
+import Recover from "./identity/recover/Recover";
 
 function App() {
     const user = {username: "my_own_name885", avatar: avatar, roles: ['user', 'author'], balance: 1560}
     const userRole = user.roles.includes('author') ? 'author' : 'user';
-    const isLoggedIn = true;
+    const isLoggedIn = false;
   return (
     <div className="App">
         {isLoggedIn && <Header user = {user} userRole = {userRole}/>}
@@ -39,7 +39,7 @@ function App() {
             <Routes>
                 <Route path="/login" element={<Login/>} />
                 <Route path="/register" element={<Registration/>} />
-                <Route path="/recover" element={<Registration/>} />
+                <Route path="/recover/*" element={<Recover />} />
                 <Route path="*" element={<Navigate to="/login" />} />
             </Routes>
         }
