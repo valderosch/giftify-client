@@ -4,12 +4,15 @@ import goalImg from "../../../../assets/icons/profile/ui-goal.png";
 import expandImg from "../../../../assets/icons/profile/ui-expand.png";
 import giftImg from "../../../../assets/icons/profile/ui-gift.png";
 import Donation from "../../../service/popups/donation/Donation";
+import GoalPopup from "../../../service/popups/goal/GoalPopup";
 
 
 const Actions = ({user}) => {
     const [activeGoal, setActiveGoal] = useState(1);
     const [expandedGoal, setExpandedGoal] = useState(null);
     const [donationPopup, setDonationPopup] = useState(false);
+    const [goalPopup, setGoalPopup] = useState(false);
+    const [selectedGoal, setSelectedGoal] = useState(null);
 
     const goals = [
         {id:1, title: "Buy me a PS5", description: "Lets buy me a PS5 please." +
@@ -36,17 +39,32 @@ const Actions = ({user}) => {
     const togglePopup = () => {
         setDonationPopup(!donationPopup)
     }
+    const toggleGoalPopup = (goal) => {
+        const userGoalDto = {
+            userImage: user.userImage,
+            user: user.username,
+            goalBalance: 15500,
+            goalImage: false,
+            goalTitle: goal.title,
+            date: "21 oct",
+            goalDescription: goal.description,
+            goalAmount: goal.goalAmount,
+            currentAmount: goal.currentAmount,
+        };
+        setSelectedGoal(userGoalDto);
+        setGoalPopup(!goalPopup);
+    };
 
     return (
         <div className="actions">
             <div className="goals-block">
                 <div className="act-partition-title">Goals</div>
                 <div className="act-goals-row">
-                    {goals.map((goal, index) => (
+                    {goals.map((goal) => (
                         <div
                             key={goal.id}
                             className={`act-goal ${expandedGoal === goal.id ? 'expanded' : activeGoal === goal.id ? 'active' : 'inactive'}`}
-                            onClick={() => toggleExpanded(goal.id)}
+                            onClick={() => toggleGoalPopup(goal)}
                             onMouseOver={() => setActiveGoal(goal.id)}
                             onMouseOut={() => expandedGoal === null && setActiveGoal(activeGoal)}
                             style={{
@@ -70,7 +88,7 @@ const Actions = ({user}) => {
                                                 <img src={goalImg} alt="goal" className="goal-img" />
                                             </div>
                                             <span className="act-goal-active-title">{goal.title}</span>
-                                            <img className="toggle-button" src={expandImg} alt="^"/>
+                                            <img className="toggle-button" src={expandImg} alt="^" />
                                         </div>
                                         <div className="act-goal-progressbar">
                                             <div
@@ -81,17 +99,6 @@ const Actions = ({user}) => {
                                     </div>
                                 )}
                             </div>
-                            {expandedGoal === goal.id && (
-                                <div className="expanded-content">
-                                    <p>{goal.description}</p>
-                                    <input type="number" placeholder="Enter amount" className="donation-input" />
-                                    <button className="donate-button">Donate</button>
-                                    <div className="progress-info">
-                                        <span>Current: ${goal.currentAmount}</span>
-                                        <span>Goal: ${goal.goalAmount}</span>
-                                    </div>
-                                </div>
-                            )}
                         </div>
                     ))}
                 </div>
@@ -101,20 +108,22 @@ const Actions = ({user}) => {
                 <div className="act-challenge-block">
                     <div className="bid-info">
                         <div className="bid-title">
-                            Support
-                            "<div className="bid-author">{user.username}</div>"
+                            Support "<div className="bid-author">{user.username}</div>"
                         </div>
                         <div className="bid-descr">
-                            Send a little gift for author, you like.
+                            Send a little gift for the author you like.
                         </div>
                     </div>
                     <div className="bid-button" onClick={togglePopup}>
-                        <img src={giftImg} alt="bid" className="bid-icon"/>
+                        <img src={giftImg} alt="bid" className="bid-icon" />
                     </div>
                 </div>
             </div>
-            { donationPopup && (
-             <Donation toggle={togglePopup} balance = {user.balance}/>
+            {donationPopup && (
+                <Donation toggle={togglePopup} balance={user.balance} />
+            )}
+            {goalPopup && selectedGoal && (
+                <GoalPopup toggle={() => setGoalPopup()} goal={selectedGoal} />
             )}
         </div>
     );
