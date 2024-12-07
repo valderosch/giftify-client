@@ -87,7 +87,7 @@ const Notification = () => {
                     <div className="nots-title">Notifications</div>
                     <div className="notifications-block">
                         <div className="timesort-block">
-                            <div className="nots-divider">Newer</div>
+                            <div className="nots-divider">New</div>
                             {filteredNotifications.map((notification, index) => (
                                 <div key={index} className="notification-item" onClick={() => toggleNotification(index)} style={{minHeight: `${index === expandedNotification ? 30 : 7 }vh`}}>
                                     <div className="notification-datas">
@@ -105,9 +105,6 @@ const Notification = () => {
                                     )}
                                 </div>
                             ))}
-                        </div>
-                        <div className="timesort-block">
-                            <div className="nots-divider">Older</div>
                         </div>
                     </div>
                 </div>

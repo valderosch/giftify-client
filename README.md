@@ -1,24 +1,34 @@
-# Getting Started with Create React App
+# Gift.fy client app Repository
+### **Gift.fy - Gift for you** 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+### About
+This app allows you to provide a social platform
+for content browsing with using microtransactions models.
+This app is client - side and refers to [Gift.fy - Server Main Application](https://github.com/valderosch/giftify-main)
 
+### How to run?
+1) Install archive on your computer or server
+2) Install all dependencies using command `npm i` in project root
+3) Make sure that server application also working and run command `npm start`
+4) Navigate to your server addres or `localhost:3000` (if code runs locally)
+5) Start using application.
+
+### How to use?
+- Use registration / login methods to crete new account.
+- Use browsing features to find other users.
+- User payment methods to buy access to their content.
+- Use social features to interact with other users.
+- Use level 2 profile upgrade to become an author and start posting content.
+- Became an author to start collecting funds
+- And many others features, that are waiting for you.
+
+## Standard info (other information from React)
+### Available Scripts
 In the project directory, you can run:
 
 ### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
 ### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
 ### `npm run build`
 
 Builds the app for production to the `build` folder.\

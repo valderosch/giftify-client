@@ -122,17 +122,13 @@ const CreatePost = ({ role }) => {
                             <div className="form-label">Price(optional):</div>
                             <input type="number" placeholder="price" className="price-bar"/>
                         </div>
-                        <div className="date-block">
-                            <div className="form-label">Publish date:</div>
-                            <input className="date-bar" type="datetime-local" />
-                        </div>
-                        <div className="title-block">
-                            <div className="form-label">Name your post</div>
-                            <input type="text" className="post-title"/>
-                        </div>
+                        {/*<div className="date-block">*/}
+                        {/*    <div className="form-label">Publish date:</div>*/}
+                        {/*    <input className="date-bar" type="datetime-local" />*/}
+                        {/*</div>*/}
                         <div className="control-block">
                             <div className="publish-now">Post now</div>
-                            <div className="schedule-post">Post later</div>
+                            {/*<div className="schedule-post">Post later</div>*/}
                         </div>
                     </div>
 

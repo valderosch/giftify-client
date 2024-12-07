@@ -57,10 +57,10 @@ const Homepage = () => {
             }},
     ];
     const authors = [
-        {avatar: avatar3, name: "rick004", notification: 4},
-        {avatar: avatar4, name: "piper", notification: 10},
-        {avatar: avatar2, name: "pewpew", notification: 2},
-        {avatar: avatar1, name: "erico", notification: 100 }
+        // {avatar: avatar3, name: "rick004", notification: 4},
+        // {avatar: avatar4, name: "piper", notification: 10},
+        // {avatar: avatar2, name: "pewpew", notification: 2},
+        // {avatar: avatar1, name: "erico", notification: 100 }
     ];
     const balance = {currency: 1650.5, subscriptions: 105, buyed: 335, support:150};
 

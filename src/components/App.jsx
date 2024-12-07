@@ -16,7 +16,7 @@ import Recover from "./identity/recover/Recover";
 function App() {
     const user = {username: "my_own_name885", avatar: avatar, roles: ['user', 'author'], balance: 1560}
     const userRole = user.roles.includes('author') ? 'author' : 'user';
-    const isLoggedIn = false;
+    const isLoggedIn = true;
   return (
     <div className="App">
         {isLoggedIn && <Header user = {user} userRole = {userRole}/>}
