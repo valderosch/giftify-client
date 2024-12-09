@@ -1,0 +1,66 @@
+@import "../../../../utils/colors";
+
+.user-nav{
+  position: fixed;
+  width: 100%;
+  height: 90%;
+  top: 11.2%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.25);
+  z-index: 6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .nav-body{
+    position: absolute;
+    width: 15%;
+    height: 23%;
+    background-color: @accent-element-dark;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 1%;
+    top: 2%;
+    left: 75%;
+    right: 30%;
+    bottom: 90%;
+    border-radius: 0.5rem;
+    border: 2px solid@primary-color;
+    .link-nav{
+      width: 100%;
+      height: 22%;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      text-decoration: none;
+      .link-icon{
+        width: 1.7rem;
+        height: 1.7rem;
+      }
+      .link-title{
+        width: 70%;
+        height: 80%;
+        margin-left: 0.5rem;
+        color: @text-color-dark;
+        font-size: 15px;
+        font-weight: 500;
+        user-select: none;
+        cursor: pointer;
+        text-decoration: none;
+        text-underline: none;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+      }
+      &:hover{
+        .link-title{
+          color: @white;
+        }
+      }
+    }
+  }
+}

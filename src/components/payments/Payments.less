@@ -1,0 +1,201 @@
+@import "../../utils/colors";
+
+.payments{
+  margin-top: 0.5%;
+  width: 100%;
+  height: 85vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  .aside{
+    width: 20%;
+    height: 88%;
+    border:2px solid @border-color-dark;
+    border-radius: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  .main-content{
+    width: 68%;
+    height: 88%;
+    margin-left: 0.5rem;
+    border: 2px solid @border-color-dark;
+    border-radius: 0.5rem;
+    overflow: scroll;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    .payment-body{
+      width: 96%;
+      height: 96%;
+      .payment-title{
+        height: 8%;
+        width: 98%;
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-end;
+        padding: 1%;
+        color: @white;
+        text-align: left;
+        font-size: 20px;
+        font-weight: 700;
+      }
+      .payments-block{
+        overflow-y: scroll;
+        overflow-x: hidden;
+        width: 100%;
+        height: 80%;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        flex-direction: column;
+        gap: 1%;
+        .payment{
+          width: 99%;
+          height: 12%;
+          background-color: @accent-element-dark;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+          gap: 1%;
+          border: 2px solid transparent;
+          border-radius: 0.5rem;
+          transition: height 0.3s ease-in;
+          .message-body{
+            width: 100%;
+            height: 70%;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            gap: 1%;
+            .payment-icon{
+              width: 1.8rem;
+              height: 1.8rem;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              border-radius: 0.5rem;
+              padding: 0.1rem;
+              margin-left: 0.5rem;
+              border: 2px solid;
+            }
+            .payment-info{
+              width: 65%;
+              height: 95%;
+              display: flex;
+              justify-content: flex-start;
+              align-items: center;
+              gap: 2%;
+              .payment-type{
+                width: 22%;
+                height: 90%;
+                overflow: hidden;
+                border-radius: 0.5rem;
+                background-color: @accent-element-dark;
+                border: 2px solid #87888c;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                color: @white;
+                font-size: 15px;
+                font-weight: 500;
+              }
+              .payment-to{
+                width: 33%;
+                height: 100%;
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                overflow: hidden;
+                color: @white;
+                font-size: 16px;
+                font-weight: 600;
+              }
+              .sub-body{
+                width: 35%;
+                height: 100%;
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                overflow: hidden;
+                color: @text-color-dark;
+                font-size: 16px;
+                font-weight: 300;
+              }
+            }
+
+            .payment-amount{
+              width: 12%;
+              margin-left: 3%;
+              height: 100%;
+              color: @text-color-dark;
+              font-size: 16px;
+              font-weight: 500;
+              display: flex;
+              justify-content: flex-start;
+              align-items: center;
+
+            }
+            .payment-date{
+              width: 10%;
+              height: 100%;
+              color: @text-color-dark;
+              font-size: 15px;
+              font-weight: 300;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+            }
+          }
+          &:hover{
+            height: 15%;
+          }
+        }
+      }
+      .pagination{
+        width: 100%;
+        height: 10%;
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: center;
+        gap: 2%;
+        .prev-button, .next-button{
+          width: 4%;
+          height: 70%;
+          border-radius: 0.5rem;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border: 2px solid transparent;
+          color: #87888c;
+          font-size: 25px;
+          &:hover{
+            color: @primary-color;
+            border-color: @primary-color;
+          }
+        }
+        .pagination-info{
+          width: 10%;
+          height: 70%;
+          background-color: @accent-element-dark;
+          border: 2px solid #87888c;
+          border-radius: 0.5rem;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-size: 16px;
+          color: @text-color-dark;
+          font-weight: 500;
+        }
+      }
+    }
+  }
+}
