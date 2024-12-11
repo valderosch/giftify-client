@@ -8,7 +8,7 @@
   display: flex;
   flex-direction: row;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
   .aside{
     width: 20%;
     height: 88%;
@@ -18,6 +18,118 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+    .balance-control{
+      margin-top: 5%;
+      width: 96%;
+      height: 50%;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      .element-value{
+        width: 92%;
+        height: 15%;
+        background-color: @accent-element-dark-hover;
+        border-radius: 0.5rem;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        padding-left: 5%;
+        color: @white;
+        font-size: 18px;
+        font-weight: 600;
+        .value{
+          color: @primary-color;
+          width: 60%;
+          height: 100%;
+          display: flex;
+          justify-content: flex-start;
+          align-items: center;
+          margin-left: 3%;
+        }
+      }
+      .balance-controls{
+        margin-top: 5%;
+        width: 96%;
+        height: 75%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        background-color: @accent-element-dark-hover;
+        border-radius: 0.5rem;
+        .b-controls-title{
+          width: 94%;
+          height: 15%;
+          display: flex;
+          justify-content: flex-start;
+          align-items: center;
+          color: @white;
+          font-size: 16px;
+          font-weight: 600;
+          user-select: none;
+        }
+        .b-controls-description{
+          width: 94%;
+          height: 20%;
+          display: flex;
+          justify-content: flex-start;
+          align-items: center;
+          color: @text-color-dark;
+          font-size: 14px;
+          font-weight: 300;
+          user-select: none;
+          text-align: left;
+
+        }
+        .b-control-block{
+          margin-top: 8%;
+          width: 94%;
+          height: 50%;
+          display: flex;
+          align-items: flex-start;
+          justify-content: center;
+          gap: 3%;
+          .top-up-btn{
+            width: 45%;
+            height: 30%;
+            border: 2px solid #09e017;
+            font-size: 16px;
+            color: @white;
+            font-weight: 500;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            user-select: none;
+            &:hover{
+              background-color: #91c496;
+            }
+          }
+          .withdraw-btn{
+            width: 45%;
+            height: 30%;
+            border: 2px solid #EA2626;
+            font-size: 16px;
+            color: @white;
+            font-weight: 500;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            user-select: none;
+            &:hover{
+              background-color: #c97272;
+            }
+          }
+        }
+      }
+    }
   }
   .main-content{
     width: 68%;

@@ -1,7 +1,8 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import "./Payments.css";
 import arrow from "../../assets/icons/ui/ui-arrow.png";
 import {formatNumber} from "../../lib/service/formatNumber";
+import {getUserBalance} from "../../api/payment";
 
 const payments = [
     {date: "2024-07-24", type: "Subscription", from: "me", to: "user28252", amount: "50",
@@ -16,16 +17,31 @@ const payments = [
         message: "From me to you. Just a simple support"},
 ]
 
-const Payments = () => {
+const Payments = ({user}) => {
     const [message, setMessage] = useState(false);
     const setVisibleMessage = () => setMessage(!message);
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 7;
+    const [balance, setBalance] = useState(0);
 
     const startIndex = (currentPage - 1) * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
     const visiblePayments = payments.slice(startIndex, endIndex);
     const totalPages = Math.ceil(payments.length / itemsPerPage);
+
+    useEffect(() => {
+        const fetchBalance = async () => {
+            try {
+                const userBalance = await getUserBalance(user.id);
+                setBalance(userBalance);
+            } catch (error) {
+                console.error("Error fetching user balance:", error);
+            }
+        };
+
+        fetchBalance();
+    }, [user.id]);
+
 
     const handleNextPage = () => {
         if (currentPage < totalPages) {
@@ -42,7 +58,26 @@ const Payments = () => {
     return (
         <div className="payments">
             <div className="aside">
-                <div className="short-stat"></div>
+                <div className="balance-control">
+                    <div className="element-value">
+                        Balance: <p className='value'>
+                        {balance.length > 6 ?
+                            formatNumber(balance)
+                            :
+                            balance
+                        } $</p>
+                    </div>
+                    <div className="balance-controls">
+                        <div className="b-controls-title">Manage balance</div>
+                        <div className="b-controls-description">
+                            Feed up your balance or make a withdrawal
+                        </div>
+                        <div className="b-control-block">
+                            <div className="top-up-btn">Top-up</div>
+                            <div className="withdraw-btn">Withdraw</div>
+                        </div>
+                    </div>
+                </div>
                 <div className="filter"></div>
             </div>
             <div className="main-content">
@@ -63,7 +98,9 @@ const Payments = () => {
                                              {transform: "rotate(180deg)", borderColor: "#EA2626"}
                                     }
                                     />
-                                    <div className="payment-amount">$ {formatNumber(payment.amount)}</div>
+                                    <div className="payment-amount">$
+                                        {payment.amount}
+                                    </div>
                                     <div className="payment-info">
                                         <div className="payment-type">{payment.type}</div>
                                         <div className="payment-to">{payment.from} ➡ {payment.to}</div>
