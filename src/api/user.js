@@ -57,3 +57,11 @@ export const updateUserProfile = async (email, profileData) => {
     );
     return response.data;
 };
+
+export const upgradeToAuthor = async (userId, upgradeData) => {
+    const response = await axios.put(
+        `${API_URL}/identity/user/UpgradeToAuthor/upgrade-to-author/${userId}`,
+        upgradeData
+    );
+    return response.data;
+};
