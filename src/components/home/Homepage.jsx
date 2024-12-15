@@ -11,50 +11,111 @@ import mockImg2 from "../../assets/icons/mock/mock-img1.png";
 import DonationGoal from "./feed/donation/DonationGoal";
 import RecommendationBlock from "./feed/recomendation/RecomendationBlock";
 import ReportElement from "../service/popups/report/ReportElement";
+import {formatNumber} from "../../lib/service/formatNumber";
 
 
 
 
-const Homepage = () => {
+const Homepage = ({user}) => {
     const posts = [
-        { type: "post", data: {image: mockImg, author_name:"bios", author_image: avatar1, title: "Created a new page on React!", date: "21 Oct.",  tier: "C",
-            description: "Created some new pages using new framework from META co. I am so exited" +
-                "to show yuu how easy it is. lest us begin. First of all your need to rewrite" +
-                "your file index.js. Here it is. LEts unpack our data structure",
-            likes: 18, comments: 2
-        }},
-        { type: "donation", data: {image: mockImg2, author_name:"clement0", author_image: avatar2, title: "Fund for Rassbery PI5",  date: "21 Oct.",  tier: "C",
-                description: "My team needs Rassbery PI 5 for ddos attack lessons. Help me to finish this dream",
-                goalAmount: 1000, currentAmount: 450
-            }},
-        { type: "post", data: {image: mockImg, author_name:"camalo", author_image: avatar1, title: "Created a new page on React!", date: "21 Oct.",  tier: "C",
-                description: "Created some new pages using new framework from META co. I am so exited" +
-                    "to show yuu how easy it is. lest us begin. First of all your need to rewrite" +
-                    "your file index.js. Here it is. LEts unpack our data structure",
-                likes: 18, comments: 2
-            }},
-        { type: "post", data: {image: mockImg2, author_name:"lockenhead", author_image: avatar1, title: "Created a new page on React!", date: "21 Oct.",  tier: "C",
-                description: "Created some new pages using new framework from META co. I am so exited" +
-                    "to show yuu how easy it is. lest us begin. First of all your need to rewrite" +
-                    "your file index.js. Here it is. LEts unpack our data structure",
-                likes: 18, comments: 2
-            }},
-        { type: "donation", data: {image: "", author_name:"clement0", author_image: avatar1, title: "Fund for Rassbery PI5",  date: "21 Oct.",  tier: "C",
-                description: "My team needs Rassbery PI 5 for ddos attack lessons. Help me to finish this dream",
-                goalAmount: 800, currentAmount: 100
-            }},
-        { type: "post", data: {image: mockImg2, author_name:"lockenhead", author_image: avatar1, title: "Created a new page on React!", date: "21 Oct.",  tier: "C",
-                description: "Created some new pages using new framework from META co. I am so exited" +
-                    "to show yuu how easy it is. lest us begin. First of all your need to rewrite" +
-                    "your file index.js. Here it is. LEts unpack our data structure",
-                likes: 18, comments: 2
-            }},
-        { type: "post", data: {image: mockImg2, author_name:"lockenhead", author_image: avatar1, title: "Created a new page on React!", date: "21 Oct.",  tier: "C",
-                description: "Created some new pages using new framework from META co. I am so exited" +
-                    "to show yuu how easy it is. lest us begin. First of all your need to rewrite" +
-                    "your file index.js. Here it is. LEts unpack our data structure",
-                likes: 18, comments: 2
-            }},
+        {
+            type: "post",
+            data: {
+                image: mockImg,
+                author_name: "astridensen",
+                author_image: avatar1,
+                title: "Created a new page on React!",
+                date: "10 Dec.",
+                tier: "C",
+                description: "I'm excited to share my new React project with you all! It's a simple todo list app, but I'm proud of how it turned out.",
+                likes: 4,
+                comments: 0
+            }
+        },
+        {
+            type: "donation",
+            data: {
+                image: mockImg2,
+                author_name: "krasmussen07",
+                author_image: avatar2,
+                title: "Fund for Rassbery PI5",
+                date: "10 Dec.",
+                tier: "C",
+                description: "My team and I are working on a project to create a low-cost, open-source computer using the Rassbery PI5. We need your help to make it happen!",
+                goalAmount: 1000,
+                currentAmount: 500
+            }
+        },
+        {
+            type: "post",
+            data: {
+                image: mockImg,
+                author_name: "muller",
+                author_image: avatar1,
+                title: "Collected needed amount!",
+                date: "10 Dec.",
+                tier: "C",
+                description: "I'm thrilled to announce that we've reached our funding goal for our new project! Thank you to everyone who contributed.",
+                likes: 2,
+                comments: 1
+            }
+        },
+        {
+            type: "post",
+            data: {
+                image: mockImg2,
+                author_name: "blackwood",
+                author_image: avatar4,
+                title: "Making new WEB site!",
+                date: "10 Dec.",
+                tier: "C",
+                description: "I'm working on a new website for my business and I'm excited to share my progress with you all. Stay tuned for updates!",
+                likes: 1,
+                comments: 0
+            }
+        },
+        {
+            type: "donation",
+            data: {
+                image: "",
+                author_name: "sage",
+                author_image: avatar3,
+                title: "Collecting money for studio recording",
+                date: "10 Dec.",
+                tier: "C",
+                description: "Just because we can! Studio located in Seatle. Audience price is 400$ per once",
+                goalAmount: 800,
+                currentAmount: 200
+            }
+        },
+        {
+            type: "post",
+            data: {
+                image: mockImg2,
+                author_name: "laurent",
+                author_image: avatar4,
+                title: "We have good news!",
+                date: "10 Dec.",
+                tier: "C",
+                description: "Our team finished working on new server machine so everyone can use it.",
+                likes: 5,
+                comments: 2
+            }
+        },
+        {
+            type: "post",
+            data: {
+                image: mockImg2,
+                author_name: "iwilder40",
+                author_image: avatar2,
+                title: "Completed scriptiong!",
+                date: "10 Dec.",
+                tier: "C",
+                description: "I'm thrilled to announce that I've completed my new project! It's a simple script that automates a task, but I'm proud of how it turned out.",
+                likes: 12,
+                comments: 4
+            }
+        }
     ];
     const authors = [
         // {avatar: avatar3, name: "rick004", notification: 4},
@@ -90,13 +151,13 @@ const Homepage = () => {
                         Community Activity
                     </div>
                     {posts.map((post, index) => {
-                        if (index >= 5 && (index - 5) % 11 === 0) {
-                            return (
-                                <div key={`recommendation-${index}`} className="recommendation-block">
-                                    <RecommendationBlock />
-                                </div>
-                            );
-                        }
+                        // if (index >= 5 && (index - 5) % 11 === 0) {
+                        //     return (
+                        //         <div key={`recommendation-${index}`} className="recommendation-block">
+                        //             <RecommendationBlock />
+                        //         </div>
+                        //     );
+                        // }
                         if (post.type === "donation") {
                             return (
                                 <DonationGoal
@@ -143,7 +204,13 @@ const Homepage = () => {
                         <div className="balance-frame">
                             <div className="b-title">Balance</div>
                             <div className="b-balance-block">
-                                <div className="balance-value">{balance.currency}</div>
+                                <div className="balance-value">
+                                    {user.balance.length > 6 ?
+                                        formatNumber(user.balance)
+                                        :
+                                        user.balance
+                                    }
+                                </div>
                                 <img className="currency" src={bitIcon} alt="bit"/>
                             </div>
                             <div className="b-stats-block">

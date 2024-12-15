@@ -1,15 +1,22 @@
-import React, {useEffect, useState, useRef} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import "./Chats.css";
 import publicImage from "../../assets/icons/ui/public.png";
 import privateImage from "../../assets/icons/ui/private.png";
 import recentImage from "../../assets/icons/ui/recent.png";
-import createImage from "../../assets/icons/navigator/CreateIcon.png";
 import pattern1 from "../../assets/icons/mock/pattern1.jpg";
 import pattern2 from "../../assets/icons/mock/pattern2.jpg";
 import pattern4 from "../../assets/icons/mock/pattern4.jpg";
 import pinImage2 from "../../assets/icons/ui/pin.png";
-import {createChat, getChatsList, getMessagesHistory, getUserById, leaveChat, sendMessageToChat} from "../../api/chat";
-
+import {
+    createChat,
+    getChatsList,
+    getMessagesHistory,
+    getUserById,
+    joinChat,
+    leaveChat,
+    sendMessageToChat
+} from "../../api/chat";
+import InviteUsers from "../service/popups/chat-options/InviteUsers";
 
 
 const Chats = ({user}) => {
@@ -23,6 +30,8 @@ const Chats = ({user}) => {
     const [participantEmails, setParticipantEmails] = useState('');
     const [userId] = useState(user.id);
     const messageEndRef = useRef(null);
+    const [options, setOptions] = useState(false);
+    const [isInvitePopupVisible, setInvitePopupVisible] = useState(false);
 
     useEffect(() => {
         const fetchChats = async () => {
@@ -82,7 +91,10 @@ const Chats = ({user}) => {
     };
 
     const handleCreateChatFormSubmit = async () => {
-        const participants = participantEmails.split(',').map(email => email.trim());
+        const participants = participantEmails
+            .split(',')
+            .map(email => email.trim())
+            .filter(email => email.length > 0);
         if (!participants.includes(user.email)) {
             participants.push(user.email);
         }
@@ -113,6 +125,17 @@ const Chats = ({user}) => {
         }
     };
 
+    const handleInviteUsers = async (emails) => {
+        try {
+            if (emails && selectedChat) {
+                await Promise.all(emails.map(email => joinChat(selectedChat._id, email)));
+                setInvitePopupVisible(false);
+            }
+        } catch (error) {
+            console.error("Error inviting users:", error);
+        }
+    };
+
     const handleSelectChat = async (chat) => {
         const username = await getUserById(userId);
         console.log(`\n\nUSERNAME _ ${username}`);
@@ -133,6 +156,19 @@ const Chats = ({user}) => {
         const randomDigit = digitArray[Math.floor(Math.random() * digitArray.length)];
         return images[randomDigit % images.length];
     };
+
+    const getUserName = async (userId) => {
+        let result = 'undeff';
+        try {
+            result = await getUserById(userId);
+            return result;
+        } catch (e) {
+            console.log(e);
+        }
+        return result
+    }
+
+    const handleChatOptions = () => setOptions(!options);
 
     return (
         <div className="chats">
@@ -190,10 +226,34 @@ const Chats = ({user}) => {
                                 <img className="chat-icon" src={selectChatImage(chat._id)} alt="icon" />
                                 <div className="chat-info">
                                     <div className="chat-name">
-                                        {chat.name}
+                                        {chat.members.length > 2
+                                            ? chat.name
+                                            : chat.members.length === 2
+                                                ? `${chat.name} (Private)`
+                                                : `${user.username} (Personal)`
+                                        }
                                     </div>
-                                    <div className="chat-last-message">{chat.last_message || 'No messages yet'}</div>
+                                    <div className="chat-last-message">{`${chat.members.length} users`  || 'No messages yet'}</div>
                                 </div>
+                                {options ?
+                                    <div className="chat-options" onClick={handleChatOptions}>
+                                        <div className="options">
+                                            <div className="popup-item">
+                                                <img src="" onClick={() => setInvitePopupVisible(true)} alt="action" className="popup-icon"/>
+                                                <div className="popup-action">Invite</div>
+                                            </div>
+                                            <div className="popup-item">
+                                                <img src="" alt="action" className="popup-icon"/>
+                                                <div className="popup-action">Delete +alert</div>
+                                            </div>
+                                        </div>
+                                        <div className="popup-close">
+                                            <div className="chat-controls-vert" onClick={handleChatOptions}>•••</div>
+                                        </div>
+                                    </div>
+                                :
+                                    <div className="chat-controls" onClick={handleChatOptions}>•••</div>
+                                }
                             </div>
                         ))}
                     </div>
@@ -217,8 +277,8 @@ const Chats = ({user}) => {
                                     </div>
                                 </div>
                                 <div className="chat-actions">
-                                    <button onClick={handleExitChat}>invite</button>
-                                    <button onClick={handleExitChat}>Leave</button>
+                                    <div onClick={() => setInvitePopupVisible(true)} className="action-button">invite</div>
+                                    <div onClick={handleExitChat} className="action-button">Leave</div>
                                 </div>
                             </div>
                         </div>
@@ -258,6 +318,12 @@ const Chats = ({user}) => {
                     </div>
                 )}
             </div>
+            {isInvitePopupVisible && (
+                <InviteUsers
+                    onInvite={handleInviteUsers}
+                    onClose={() => setInvitePopupVisible(false)}
+                />
+            )}
         </div>
     );
 };

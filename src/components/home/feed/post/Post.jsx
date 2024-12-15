@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import "./Post.css";
 import likeIcon from "../../../../assets/icons/ui/like.png";
+import likeIconEmpt from "../../../../assets/icons/ui/like-empt.png";
 import commIcon from "../../../../assets/icons/ui/comm.png";
 import saveIcon from "../../../../assets/icons/ui/save.png";
 import shareIcon from "../../../../assets/icons/ui/share.png";
@@ -43,7 +44,7 @@ const Post = (props) => {
                 </div>
                 <div className="post-controls">
                     <div className="social-block">
-                        <div className="likes-block">
+                        <div className="likes-block" onClick={likeIcon}>
                             <img className="like-img" src={likeIcon} alt="like"/>
                             <div className="like-counter">{props.likes}</div>
                         </div>

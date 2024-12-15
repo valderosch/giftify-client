@@ -6,7 +6,9 @@ const Donations = ({user, role}) => {
     return (
         <div className="donations">
             {role === 'author'?
-                <div className=""></div>
+                <div className="">
+
+                </div>
                 :
                 <Access/>
             }

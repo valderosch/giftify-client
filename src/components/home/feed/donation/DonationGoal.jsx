@@ -15,7 +15,7 @@ const DonationGoal = ({ image, author, authorimg, title, date, description, goal
     const userGoalDto = {
         userImage: authorimg,
         user: author,
-        goalBalance: 15500,
+        goalBalance: 16800,
         goalImage: image,
         goalTitle: title,
         date: date,
