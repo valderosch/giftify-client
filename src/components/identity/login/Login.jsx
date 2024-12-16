@@ -8,6 +8,7 @@ import mockBanner from "../../../assets/icons/mock/mock-abstract.jpg";
 import {Link} from "react-router-dom";
 import {loginUser} from "../../../api/user";
 import {useNavigate} from "react-router";
+import {getUserBalance} from "../../../api/payment";
 
 
 const Login = ({ setUser }) => {
@@ -20,7 +21,7 @@ const Login = ({ setUser }) => {
             const userdata = await loginUser({ email, password });
             const user = userdata.user;
             const defaultUser = {
-                id: "28c-28c-28c",
+                id: "DB8762FE-BE39-444E-BDC6-E0106AC6132A",
                 token: "122122",
                 username: "user-no-data",
                 email: "noemail@mail.com",
@@ -39,6 +40,8 @@ const Login = ({ setUser }) => {
                 balance: 15605,
             };
 
+            const userBalance = await getUserBalance(user.id || defaultUser.id);
+
             const fullUser = {
                 ...defaultUser,
                 ...user,
@@ -49,12 +52,12 @@ const Login = ({ setUser }) => {
                 username: user.username || defaultUser.username,
                 email: user.email || user.email,
                 socialLinks: user.socialLinks.length >= 1 || defaultUser.socialLinks,
-                balance: user.balance || defaultUser.balance,
+                balance: userBalance || user.balance ||defaultUser.balance,
                 roles: user.roles || defaultUser.roles,
                 longDescription: user.longDescription || defaultUser.longDescription,
                 shortDescription: user.shortDescription || defaultUser.shortDescription,
             };
-
+            localStorage.setItem('balance', JSON.stringify(userBalance));
             localStorage.setItem('user', JSON.stringify(fullUser));
             setUser(fullUser);
             navigate('/');
