@@ -187,7 +187,7 @@
       }
       .notifications-block{
         width: 100%;
-        height: auto;
+        height: 83%;
         overflow-x: hidden;
         overflow-y: scroll;
         display: flex;
@@ -304,6 +304,44 @@
 
             }
           }
+        }
+      }
+
+      .pagination{
+        width: 100%;
+        height: 10%;
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: center;
+        gap: 2%;
+        .prev, .next{
+          width: 4%;
+          height: 70%;
+          border-radius: 0.5rem;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border: 2px solid transparent;
+          color: #87888c;
+          font-size: 25px;
+          &:hover{
+            color: @primary-color;
+            border-color: @primary-color;
+          }
+        }
+        .pagination-infos{
+          width: 10%;
+          height: 70%;
+          background-color: @accent-element-dark;
+          border: 2px solid #87888c;
+          border-radius: 0.5rem;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-size: 16px;
+          color: @text-color-dark;
+          font-weight: 500;
         }
       }
     }

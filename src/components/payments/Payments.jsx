@@ -2,7 +2,9 @@ import React, {useEffect, useState} from 'react';
 import "./Payments.css";
 import arrow from "../../assets/icons/ui/ui-arrow.png";
 import {formatNumber} from "../../lib/service/formatNumber";
-import {getUserBalance} from "../../api/payment";
+import {getUserBalance, topUpBalance, withdrawBalance} from "../../api/payment";
+import TopUpBalance from "../service/popups/payments/TopUpBalance";
+import WithdrawBalance from "../service/popups/payments/WithdrawBalance";
 
 const payments = [
     {date: "2024-07-24", type: "Subscription", from: "me", to: "user28252", amount: "50",
@@ -17,12 +19,14 @@ const payments = [
         message: "From me to you. Just a simple support"},
 ]
 
-const Payments = ({user}) => {
+const Payments = ({user, setUser}) => {
     const [message, setMessage] = useState(false);
     const setVisibleMessage = () => setMessage(!message);
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 7;
     const [balance, setBalance] = useState(0);
+    const [showTopUpPopup, setShowTopUpPopup] = useState(false);
+    const [showWithdrawPopup, setShowWithdrawPopup] = useState(false);
 
     const startIndex = (currentPage - 1) * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
@@ -32,8 +36,14 @@ const Payments = ({user}) => {
     useEffect(() => {
         const fetchBalance = async () => {
             try {
-                const userBalance = await getUserBalance(user.id);
-                setBalance(userBalance);
+                const localBalance = localStorage.getItem('balance');
+                if (localBalance) {
+                    setBalance(JSON.parse(localBalance));
+                } else {
+                    const userBalance = await getUserBalance(user.id);
+                    setBalance(userBalance);
+                    localStorage.setItem('balance', JSON.stringify(userBalance));
+                }
             } catch (error) {
                 console.error("Error fetching user balance:", error);
             }
@@ -41,6 +51,26 @@ const Payments = ({user}) => {
 
         fetchBalance();
     }, [user.id]);
+
+    const handleTransaction = async (type, amount) => {
+        try {
+            let updatedBalance;
+            if (type === "topUp") {
+                updatedBalance = await topUpBalance(user.id, amount);
+            } else if (type === "withdraw") {
+                updatedBalance = await withdrawBalance(user.id, amount);
+            }
+            setBalance(updatedBalance);
+            setUser(prev => {
+                const updatedUser = { ...prev, balance: updatedBalance };
+                localStorage.setItem("user", JSON.stringify(updatedUser));
+                return updatedUser;
+            });
+            localStorage.setItem("balance", JSON.stringify(updatedBalance));
+        } catch (error) {
+            console.error(`Error during ${type} transaction:`, error);
+        }
+    };
 
 
     const handleNextPage = () => {
@@ -73,8 +103,18 @@ const Payments = ({user}) => {
                             Feed up your balance or make a withdrawal
                         </div>
                         <div className="b-control-block">
-                            <div className="top-up-btn">Top-up</div>
-                            <div className="withdraw-btn">Withdraw</div>
+                            <div
+                                className="top-up-btn"
+                                onClick={() => setShowTopUpPopup(true)}
+                            >
+                                Top-up
+                            </div>
+                            <div
+                                className="withdraw-btn"
+                                onClick={() => setShowWithdrawPopup(true)}
+                            >
+                                Withdraw
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -90,7 +130,7 @@ const Payments = ({user}) => {
                             >
                                 <div className="message-body">
                                     <img src={arrow}
-                                         alt="paym"
+                                         alt="payment"
                                          className="payment-icon"
                                          style={payment.to === 'me' ?
                                              {transform: "rotate(0deg)", borderColor: "#09e017"}
@@ -131,6 +171,20 @@ const Payments = ({user}) => {
                             {'>'}
                         </div>
                     </div>
+                    {showTopUpPopup && (
+                        <TopUpBalance
+                            balance={balance}
+                            onClose={() => setShowTopUpPopup(false)}
+                            onConfirm={(amount) => handleTransaction("topUp", amount)}
+                        />
+                    )}
+                    {showWithdrawPopup && (
+                        <WithdrawBalance
+                            balance={balance}
+                            onClose={() => setShowWithdrawPopup(false)}
+                            onConfirm={(amount) => handleTransaction("withdraw", amount)}
+                        />
+                    )}
                 </div>
             </div>
         </div>

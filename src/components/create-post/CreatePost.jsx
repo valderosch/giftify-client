@@ -7,8 +7,13 @@ import fileImg from "../../assets/icons/ui/pin.png";
 import {getValue} from "@testing-library/user-event/dist/utils";
 import Access from "../service/access/Access";
 import fileicon from '../../assets/icons/ui/document.png';
+import {Link} from "react-router-dom";
+import UserToAuthorAccess from "../service/access/UserToAuthorAccess";
+import axios from "axios";
+import {redirect, useNavigate} from "react-router";
+import {createPost} from "../../api/content";
 
-const CreatePost = ({ role }) => {
+const CreatePost = ({ role, user }) => {
     const [content, setContent] = useState('');
     const [previewContent, setPreviewContent] = useState('');
     const [images, setImages] = useState([]);
@@ -17,8 +22,11 @@ const CreatePost = ({ role }) => {
     const [draggedIndex, setDraggedIndex] = useState(null);
     const [postSettings, setPostSettings] = useState([]);
     const [postTitle, setPostTitle] = useState('');
+    const [planId, setPlanId] = useState(1);
+    const [price, setPrice] = useState(0);
     const quillRef = useRef(null);
     const quillInstance = useRef(null);
+    const navigate = useNavigate();
 
     useEffect(() => {
         if (quillInstance.current) return;
@@ -104,12 +112,44 @@ const CreatePost = ({ role }) => {
         setPostTitle(event.target.value);
     }
 
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+
+        const fileIds = files.map((file) => file.id);
+
+        const postData = {
+            title: postTitle,
+            content: content,
+            fileIds,
+            isPublic: false,
+            planId: 2,
+            price: price,
+        };
+
+        try {
+            console.log(user.email);
+            console.log(postData)
+            const response = await createPost(user.email, postData);
+            navigate('/');
+            if (response.data) {
+                console.log('Пост створено успішно!');
+            } else {
+                console.error('Помилка при створенні посту:', response.data.error);
+            }
+        } catch (error) {
+            console.error('Помилка при відправці запиту:', error);
+        }
+    };
+
     return (
         <div className="create-post">
             {role === 'author' ? (
                 <div className="author-tools">
                     <div className="settings-panel" >
-                        <div className="settings-label">Post Settings</div>
+                        <div className="settings-label">RADIO</div>
+                        <div className="s-label">
+                            Post Settings
+                        </div>
                         <div className="access-block">
                             <div className="form-label">Access:</div>
                             <select className="select">
@@ -119,7 +159,7 @@ const CreatePost = ({ role }) => {
                             </select>
                         </div>
                         <div className="price-block">
-                            <div className="form-label">Price(optional):</div>
+                            <div className="form-label">Price(minimun 1$):</div>
                             <input type="number" placeholder="price" className="price-bar"/>
                         </div>
                         {/*<div className="date-block">*/}
@@ -127,7 +167,7 @@ const CreatePost = ({ role }) => {
                         {/*    <input className="date-bar" type="datetime-local" />*/}
                         {/*</div>*/}
                         <div className="control-block">
-                            <div className="publish-now">Post now</div>
+                            <div  onClick={handleSubmit} className="publish-now">Post now</div>
                             {/*<div className="schedule-post">Post later</div>*/}
                         </div>
                     </div>
@@ -216,7 +256,7 @@ const CreatePost = ({ role }) => {
                 </div>
             ) : (
                 <div className="no-access-screen">
-                    <Access/>
+                    <UserToAuthorAccess/>
                     <div ref={quillRef} className="text-editor-broke" style={{display: "none"}}></div>
                 </div>
             )}
