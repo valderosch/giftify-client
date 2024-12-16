@@ -1,0 +1,92 @@
+@import "../../../utils/colors";
+
+.access-screen{
+  width: 100%;
+  height: 85vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .screen-content{
+    width: 90%;
+    height: 70%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    .access-warning{
+      width: 100%;
+      height: 15%;
+      color: @white;
+      font-size: 30px;
+      font-weight: 600;
+      user-select: none;
+    }
+    .access-description{
+      margin-top: 1%;
+      margin-left: 15%;
+      width: 44%;
+      color: @text-color-dark;
+      font-size: 18px;
+      font-weight: 500;
+      user-select: none;
+      border: 2px solid @border-color-accent;
+      border-radius: 0.5rem;
+      padding: 0.5%;
+    }
+    .access-tip {
+      margin-top: 1%;
+      margin-right: 10%;
+      width: 40%;
+      color: @text-color-dark;
+      font-size: 18px;
+      font-weight: 400;
+      user-select: none;
+      text-decoration: none;
+      border: 2px solid @border-color-accent;
+      border-radius: 0.5rem;
+      text-align: left;
+      padding: 0.5%;
+    }
+    .access-controls{
+      margin-top: 2%;
+      width: 50%;
+      height: 20%;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      gap: 2%;
+      .return-button{
+        width: 30%;
+        height: 50%;
+        margin-top: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 0.5rem;
+        color: @text-color-dark;
+        font-size: 16px;
+        font-weight: 600;
+        user-select: none;
+        cursor: pointer;
+        text-decoration: none;
+        border: 2px solid @border-color-accent;
+        transition: 0.1s background-color ease-in;
+        &:hover{
+          color: @dark-element-dark;
+          background-color: @primary-color;
+          border-color: @primary-hover-color;
+        }
+      }
+      #return{
+        width: 20%;
+        margin-top: 0;
+        color: @primary-hover-color;
+        border-color: @primary-hover-color;
+        &:hover{
+          color: @dark-element-dark;
+        }
+      }
+    }
+  }
+}

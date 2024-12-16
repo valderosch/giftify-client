@@ -44,6 +44,8 @@ const GoalPopup = ({toggle, goal = {}}) => {
 
         setError("");
         // onDonate(value);
+        toggle();
+        alert("Success!")
         console.log(`Donated: ${value}`);
     };
 

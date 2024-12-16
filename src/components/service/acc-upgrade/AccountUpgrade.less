@@ -1,0 +1,274 @@
+@import "../../../utils/colors";
+
+.upgrade{
+  margin-top: 0.5%;
+  width: 39%;
+  height: 75vh;
+  border: 2px solid @border-color-dark;
+  border-radius: 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .upgrade-content{
+    width: 90%;
+    height: 90%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    overflow: scroll;
+    .upgrade-header{
+      width: 100%;
+      height: 10%;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      flex-direction: column;
+      .header-title{
+        width: 100%;
+        height: 50%;
+        font-weight: 600;
+        font-size: 18px;
+        color: @white;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+      }
+      .header-desrc{
+        width: 100%;
+        height: 40%;
+        font-weight: 400;
+        font-size: 15px;
+        color: @text-color-dark;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+      }
+    }
+    .upgrade-form{
+      margin-top: 2%;
+      width: 90%;
+      height: 95%;
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-start;
+      flex-direction: column;
+      gap: 1%;
+      .account-input{
+        width: 100%;
+        height: 15%;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        color: @text-color-dark;
+        font-size: 15px;
+        font-weight: 300;
+        .acc-input{
+          margin-top: 1%;
+          padding-left: 1%;
+          width: 97%;
+          height: 80%;
+          border: 2px solid@border-color-accent;
+          border-radius: 0.5rem;
+          outline: 0;
+          color: @white;
+          font-size: 16px;
+          font-weight: 500;
+          background-color: @accent-element-dark;
+          &:focus{
+            border-color: @primary-color;
+          }
+        }
+      }
+      .account-area{
+        width: 100%;
+        height: 30%;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        color: @text-color-dark;
+        font-size: 15px;
+        font-weight: 300;
+        .acc-area{
+          margin-top: 1%;
+          width: 98%;
+          height: 82%;
+          border: 2px solid@border-color-accent;
+          border-radius: 0.5rem;
+          outline: 0;
+          color: @white;
+          font-size: 16px;
+          font-weight: 500;
+          background-color: @accent-element-dark;
+          &:focus{
+            border-color: @primary-color;
+          }
+
+        }
+      }
+      .account-images{
+        width: 100%;
+        height: 10%;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        flex-direction: row;
+        label{
+          margin-left: 3%;
+          width: 25%;
+          height: 90%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: row;
+          color: @text-color-dark;
+          font-size: 16px;
+          font-weight: 500;
+          border: 2px solid @border-color-accent;
+          border-radius: 0.5rem;
+          cursor: pointer;
+          user-select: none;
+          gap: 10%;
+          .input-img{
+            width: 1.8rem;
+            height: 1.8rem;
+            transform: rotate(45deg);
+          }
+          .file-input{
+            display: none;
+          }
+        }
+
+      }
+      .account-topic{
+        margin-top: 2%;
+        width: 100%;
+        height: 20%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        p{
+          margin-top: 0;
+          width: 100%;
+          height: 20%;
+          color: @text-color-dark;
+          font-size: 15px;
+          font-weight: 300;
+          display: flex;
+          justify-content: flex-start;
+          align-items: center;
+        }
+        .topics-grid{
+          margin-top: 0;
+          width: 100%;
+          height: 60%;
+          .topic-tile-c{
+            margin: 0.2%;
+            height: 45%;
+            border: 2px solid @border-color-accent;
+            outline: 0;
+            color: @white;
+            border-radius: 0.3rem;
+            background-color: inherit;
+            font-size: 15px;
+            font-weight: 500;
+          }
+          .topic-tile-cselected{
+            margin: 0.2%;
+            height: 45%;
+            border: 2px solid @primary-color;
+            outline: 0;
+            color: @primary-color;
+            border-radius: 0.3rem;
+            background-color: inherit;
+            font-size: 15px;
+            font-weight: 500;
+          }
+        }
+      }
+      .links{
+        margin-top: 5%;
+        width: 100%;
+        min-height: 10%;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        color: @text-color-dark;
+        font-weight: 500;
+        font-size: 15px;
+        .social-links{
+          width: 80%;
+          height: 100%;
+          margin-left: 1%;
+          display: flex;
+          justify-content: flex-start;
+          align-items: center;
+          flex-direction: row;
+          gap: 1%;
+          .pp{
+            width: 30%;
+            color: @text-color-dark;
+            font-weight: 500;
+            font-size: 15px;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+          }
+          .platform{
+            width: 22%;
+            height: 60%;
+            outline: 0;
+            border: 0;
+            color: @white;
+            font-weight: 500;
+            font-size: 15px;
+            border-radius: 0.3rem;
+            background-color: @accent-element-dark;
+          }
+          .linkkk{
+            width: 76%;
+            height: 60%;
+            outline: 0;
+            border: 0;
+            color: @white;
+            font-weight: 500;
+            font-size: 15px;
+            border-radius: 0.3rem;
+            background-color: @accent-element-dark;
+          }
+          .social-links-list{
+            position: absolute;
+            width: 20%;
+            background-color: #394043;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            .social-link-item{
+              width: 100%;
+              height: 10%;
+              display: flex;
+              flex-direction: row;
+              gap: 2%;
+            }
+          }
+        }
+      }
+      .submit-button{
+        width: 38%;
+        height: 7%;
+        margin-top: 1%;
+        background-color: @primary-color;
+        color: @accent-element-dark;
+        border: 0;
+        outline: 0;
+        border-radius: 0.5rem;
+        font-size: 16px;
+        font-weight: 600;
+      }
+    }
+  }
+}

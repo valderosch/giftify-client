@@ -44,6 +44,7 @@ const Donation = ({toggle, balance}) => {
         } else {
             console.log("Success: Donation completed");
         }
+        toggle();
     };
 
     return (
